@@ -9,6 +9,6 @@ class HomeController extends Controller
 {
     public function test(Request $request)
     {
-        return "ahmet";
+        return $this->successResponse("test", 'sss', 200);
     }
 }
