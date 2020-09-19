@@ -27,4 +27,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Board::class, 'board_user');
     }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'team_user');
+    }
 }
