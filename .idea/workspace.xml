@@ -20,9 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66491a87-7a9b-4251-9ea6-035f5d4a037b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/trello-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/trello-api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -202,7 +199,7 @@
       <updated>1600519956857</updated>
       <workItem from="1600519958760" duration="1473000" />
       <workItem from="1600523191280" duration="2023000" />
-      <workItem from="1600525241756" duration="676000" />
+      <workItem from="1600525241756" duration="820000" />
     </task>
     <servers />
   </component>
