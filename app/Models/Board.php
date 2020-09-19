@@ -11,7 +11,7 @@ class Board extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'board_user');
+        return $this->belongsToMany(User::class, 'board_users');
     }
 
     public function columns()

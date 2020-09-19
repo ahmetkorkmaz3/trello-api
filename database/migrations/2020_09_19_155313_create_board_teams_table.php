@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBoardUserTable extends Migration
+class CreateBoardTeamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,19 @@ class CreateBoardUserTable extends Migration
      */
     public function up()
     {
-        Schema::table('board_user', function (Blueprint $table) {
+        Schema::create('board_teams', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('board_id');
-            $table->unsignedBigInteger('user_id');
-            $table->timestamps();
+            $table->unsignedBigInteger('team_id');
 
             $table->foreign('board_id')
                 ->references('id')
                 ->on('boards')
                 ->onDelete('cascade');
 
-            $table->foreign('user_id')
+            $table->foreign('team_id')
                 ->references('id')
-                ->on('users')
+                ->on('teams')
                 ->onDelete('cascade');
         });
     }
@@ -38,6 +37,6 @@ class CreateBoardUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('board_user');
+        Schema::dropIfExists('board_teams');
     }
 }

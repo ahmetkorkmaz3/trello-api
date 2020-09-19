@@ -11,11 +11,11 @@ class Team extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'team_user');
+        return $this->belongsToMany(User::class, 'team_users');
     }
 
     public function boards()
     {
-        return $this->belongsToMany(Board::class, 'board_team');
+        return $this->belongsToMany(Board::class, 'board_teams');
     }
 }

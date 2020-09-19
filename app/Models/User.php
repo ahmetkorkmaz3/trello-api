@@ -25,11 +25,11 @@ class User extends Authenticatable
 
     public function boards()
     {
-        return $this->belongsToMany(Board::class, 'board_user');
+        return $this->belongsToMany(Board::class, 'board_users');
     }
 
     public function teams()
     {
-        return $this->belongsToMany(Team::class, 'team_user');
+        return $this->belongsToMany(Team::class, 'team_users');
     }
 }
