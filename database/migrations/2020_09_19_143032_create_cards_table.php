@@ -15,7 +15,15 @@ class CreateCardsTable extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->unsignedBigInteger('column_id');
             $table->timestamps();
+
+            $table->foreign('column_id')
+                ->references('id')
+                ->on('columns')
+                ->onDelete('cascade');
         });
     }
 
