@@ -17,6 +17,7 @@ class CreateBoardTeamsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('board_id');
             $table->unsignedBigInteger('team_id');
+            $table->timestamps();
 
             $table->foreign('board_id')
                 ->references('id')

@@ -17,6 +17,7 @@ class CreateTeamUsersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('team_id');
             $table->unsignedBigInteger('user_id');
+            $table->timestamps();
 
             $table->foreign('team_id')
                 ->references('id')
