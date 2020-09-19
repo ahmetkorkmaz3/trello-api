@@ -20,8 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66491a87-7a9b-4251-9ea6-035f5d4a037b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/90a412f3-e3ba-4785-848a-d73983922244.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/90a412f3-e3ba-4785-848a-d73983922244.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_154920_create_team_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_154920_create_team_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_155313_create_board_teams_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_155313_create_board_teams_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +39,29 @@
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="migrations" />
+                    <option name="lastUsedInstant" value="1600524981" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1600524980" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -149,10 +174,18 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="/var/www/html/tradegram" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Api" />
+      <recent name="$PROJECT_DIR$/app/Models" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -169,7 +202,8 @@
       <option name="presentableId" value="Default" />
       <updated>1600519956857</updated>
       <workItem from="1600519958760" duration="1473000" />
-      <workItem from="1600523191280" duration="1646000" />
+      <workItem from="1600523191280" duration="2023000" />
+      <workItem from="1600525241756" duration="5328000" />
     </task>
     <servers />
   </component>
@@ -189,13 +223,21 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="555" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600531172636">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="555" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600531172636" />
     <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1600524025954">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600524025954" />
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1600523513594">
+    <state x="449" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1600525454379">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600523513594" />
+    <state x="449" y="188" width="1022" height="737" key="SettingsEditor/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600525454379" />
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1600531409264">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600531409264" />
   </component>
 </project>
