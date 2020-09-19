@@ -15,4 +15,9 @@ class Board extends Model
     {
         return $this->hasMany(Column::class);
     }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'board_team');
+    }
 }

@@ -10,4 +10,9 @@ class Team extends Model
     {
         return $this->belongsToMany(User::class, 'team_user');
     }
+
+    public function boards()
+    {
+        return $this->belongsToMany(Board::class, 'board_team');
+    }
 }
