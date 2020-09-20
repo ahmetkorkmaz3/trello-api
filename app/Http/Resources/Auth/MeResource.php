@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources\Auth;
 
+use App\Http\Resources\Board\BoardResource;
+use App\Http\Resources\Team\TeamResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class MeResource extends JsonResource
@@ -23,6 +25,8 @@ class MeResource extends JsonResource
             'email' => $this->email,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'boards' => $this->boards,
+            'teams' => $this->teams,
         ];
     }
 }

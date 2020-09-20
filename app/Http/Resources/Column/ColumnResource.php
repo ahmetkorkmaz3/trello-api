@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Column;
 
+use App\Http\Resources\Card\CardResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ColumnResource extends JsonResource
@@ -20,7 +21,7 @@ class ColumnResource extends JsonResource
             'board_id' => $this->board_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'cards' => $this->cards,
+            'cards' => CardResource::collection($this->cards),
         ];
     }
 }
