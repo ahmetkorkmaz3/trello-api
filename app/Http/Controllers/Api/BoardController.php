@@ -9,6 +9,7 @@ use App\Http\Requests\Board\StoreBoardRequest;
 use App\Http\Requests\Board\UpdateBoardRequest;
 use App\Http\Resources\Board\BoardResource;
 use App\Models\Board;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,9 +46,11 @@ class BoardController extends Controller
      * @param ShowBoardRequest $request
      * @param Board $board
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function show(ShowBoardRequest $request, Board $board)
     {
+        $this->authorize('view', $board);
         return $this->successResponse(BoardResource::make($board), 'Board Details', 200);
     }
 
@@ -64,7 +67,7 @@ class BoardController extends Controller
         } catch (\Exception $exception) {
             return $this->errorResponse('Board could not updated!', 500);
         }
-        return $this->successResponse(BoardResource::collection($board), 'Board updated successfully', 200);
+        return $this->successResponse(BoardResource::make($board), 'Board updated successfully', 200);
     }
 
     /**
