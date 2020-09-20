@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Column\DestroyColumnRequest;
 use App\Http\Requests\Column\IndexColumnRequest;
 use App\Http\Requests\Column\ShowColumnRequest;
 use App\Http\Requests\Column\StoreColumnRequest;
@@ -68,10 +69,11 @@ class ColumnController extends Controller
     }
 
     /**
+     * @param DestroyColumnRequest $request
      * @param Column $column
      * @return JsonResponse
      */
-    public function destroy(Column $column)
+    public function destroy(DestroyColumnRequest $request, Column $column)
     {
         try {
             $column->delete();

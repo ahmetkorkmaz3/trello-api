@@ -9,6 +9,10 @@ class Card extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'name', 'description',
+    ];
+
     public function column()
     {
         return $this->belongsTo(Column::class);

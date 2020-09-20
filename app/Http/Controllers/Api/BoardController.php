@@ -64,7 +64,7 @@ class BoardController extends Controller
         } catch (\Exception $exception) {
             return $this->errorResponse('Board could not updated!', 500);
         }
-        return $this->successResponse($board, 'Board updated successfully', 200);
+        return $this->successResponse(BoardResource::collection($board), 'Board updated successfully', 200);
     }
 
     /**
