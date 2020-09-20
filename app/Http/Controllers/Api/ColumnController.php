@@ -3,84 +3,80 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Column\IndexColumnRequest;
+use App\Http\Requests\Column\ShowColumnRequest;
+use App\Http\Requests\Column\StoreColumnRequest;
+use App\Http\Requests\Column\UpdateColumnRequest;
+use App\Models\Board;
 use App\Models\Column;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ColumnController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param IndexColumnRequest $request
+     * @param Board $board
+     * @return JsonResponse
      */
-    public function index()
+    public function index(IndexColumnRequest $request, Board $board)
     {
-        //
+        return $this->successResponse($board->columns, 'Board columns', 200);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param StoreColumnRequest $request
+     * @param Board $board
+     * @return JsonResponse
      */
-    public function create()
+    public function store(StoreColumnRequest $request, Board $board)
     {
-        //
+        try {
+            $column = $board->columns()->create([
+                'name' => $request->name,
+            ]);
+        } catch (\Exception $exception) {
+            return $this->errorResponse('Column could not be created!' , 500);
+        }
+        return $this->successResponse($column, 'Column created successfully', 201);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param ShowColumnRequest $request
+     * @param Column $column
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function show(ShowColumnRequest $request, Column $column)
     {
-        //
+        return $this->successResponse($column, 'Column Detail', 200);
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Column  $column
-     * @return \Illuminate\Http\Response
+     * @param UpdateColumnRequest $request
+     * @param Column $column
+     * @return JsonResponse
      */
-    public function show(Column $column)
+    public function update(UpdateColumnRequest $request, Column $column)
     {
-        //
+        try {
+            $column->update($request->validated());
+        } catch (\Exception $exception) {
+            return $this->errorResponse('Column could not updated!', 500);
+        }
+        return $this->successResponse($column, 'Column updated successfully', 200);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Column  $column
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Column $column)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Column  $column
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Column $column)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Column  $column
-     * @return \Illuminate\Http\Response
+     * @param Column $column
+     * @return JsonResponse
      */
     public function destroy(Column $column)
     {
-        //
+        try {
+            $column->delete();
+        } catch (\Exception $exception) {
+            return $this->errorResponse('Column could not be deleted!', 500);
+        }
+        return $this->successResponse(null, 'Column deleted successfully', 200);
     }
 }

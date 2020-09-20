@@ -9,6 +9,10 @@ class Column extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'name',
+    ];
+
     public function board()
     {
         return $this->belongsTo(Board::class);

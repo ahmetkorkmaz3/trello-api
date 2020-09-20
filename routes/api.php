@@ -23,4 +23,10 @@ Route::middleware('auth:api')->group(function () {
     Route::get('auth/me', 'AuthController@me');
 
     Route::apiResource('board', 'BoardController');
+
+    // Column route list
+    Route::get('board/{board}/column', 'ColumnController@index');
+    Route::post('board/{board}/column', 'ColumnController@store');
+    Route::apiResource('column', 'ColumnController')->only('show', 'update', 'destroy');
+//    Route::get('board/{board}/column/{column}', 'ColumnController@show');
 });
