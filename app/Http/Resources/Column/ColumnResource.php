@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Board;
+namespace App\Http\Resources\Column;
 
-use App\Http\Resources\Column\ColumnResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BoardResource extends JsonResource
+class ColumnResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,8 +17,10 @@ class BoardResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'photo_id' => $this->photo_id,
-            'columns' => ColumnResource::collection($this->columns),
+            'board_id' => $this->board_id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'cards' => $this->cards,
         ];
     }
 }

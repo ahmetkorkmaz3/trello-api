@@ -7,6 +7,7 @@ use App\Http\Requests\Column\IndexColumnRequest;
 use App\Http\Requests\Column\ShowColumnRequest;
 use App\Http\Requests\Column\StoreColumnRequest;
 use App\Http\Requests\Column\UpdateColumnRequest;
+use App\Http\Resources\Column\ColumnResource;
 use App\Models\Board;
 use App\Models\Column;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +22,7 @@ class ColumnController extends Controller
      */
     public function index(IndexColumnRequest $request, Board $board)
     {
-        return $this->successResponse($board->columns, 'Board columns', 200);
+        return $this->successResponse(ColumnResource::collection($board->columns), 'Board columns', 200);
     }
 
     /**
@@ -38,7 +39,7 @@ class ColumnController extends Controller
         } catch (\Exception $exception) {
             return $this->errorResponse('Column could not be created!' , 500);
         }
-        return $this->successResponse($column, 'Column created successfully', 201);
+        return $this->successResponse(ColumnResource::collection($column), 'Column created successfully', 201);
     }
 
     /**
@@ -48,7 +49,7 @@ class ColumnController extends Controller
      */
     public function show(ShowColumnRequest $request, Column $column)
     {
-        return $this->successResponse($column, 'Column Detail', 200);
+        return $this->successResponse(ColumnResource::make($column), 'Column Detail', 200);
     }
 
     /**
@@ -63,7 +64,7 @@ class ColumnController extends Controller
         } catch (\Exception $exception) {
             return $this->errorResponse('Column could not updated!', 500);
         }
-        return $this->successResponse($column, 'Column updated successfully', 200);
+        return $this->successResponse(ColumnResource::collection($column), 'Column updated successfully', 200);
     }
 
     /**
