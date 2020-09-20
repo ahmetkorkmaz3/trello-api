@@ -9,6 +9,10 @@ class Team extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'name', 'description', 'website',
+    ];
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'team_users');

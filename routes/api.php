@@ -33,4 +33,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('column/{column}/card', 'CardController@index');
     Route::post('column/{column}/card', 'CardController@store');
     Route::apiResource('card', 'CardController')->only('show', 'update', 'destroy');
+
+    // team route list
+    Route::apiResource('team', 'TeamController');
 });

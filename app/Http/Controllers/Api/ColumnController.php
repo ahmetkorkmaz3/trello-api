@@ -65,7 +65,7 @@ class ColumnController extends Controller
         } catch (\Exception $exception) {
             return $this->errorResponse('Column could not updated!', 500);
         }
-        return $this->successResponse(ColumnResource::collection($column), 'Column updated successfully', 200);
+        return $this->successResponse(ColumnResource::make($column), 'Column updated successfully', 200);
     }
 
     /**

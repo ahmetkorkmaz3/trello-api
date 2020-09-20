@@ -21,10 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="66491a87-7a9b-4251-9ea6-035f5d4a037b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/BoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BoardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ColumnController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ColumnController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Card.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Card.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/TeamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/TeamController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Team.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -257,13 +256,13 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="739" y="466" width="431" height="181" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600540481772" />
-    <state x="652" y="276" width="616" height="554" key="find.popup" timestamp="1600551787552">
+    <state x="652" y="276" width="616" height="554" key="find.popup" timestamp="1600627328109">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="652" y="276" width="616" height="554" key="find.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600551787552" />
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1600614361103">
+    <state x="652" y="276" width="616" height="554" key="find.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600627328109" />
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1600628499034">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600614361103" />
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600628499034" />
   </component>
 </project>
