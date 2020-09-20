@@ -9,6 +9,10 @@ class Board extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'name',
+    ];
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'board_users');

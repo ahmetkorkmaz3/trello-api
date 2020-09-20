@@ -21,4 +21,6 @@ Route::post('/auth/login', 'AuthController@login');
 
 Route::middleware('auth:api')->group(function () {
     Route::get('auth/me', 'AuthController@me');
+
+    Route::apiResource('board', 'BoardController');
 });
