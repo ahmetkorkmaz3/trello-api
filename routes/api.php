@@ -36,4 +36,9 @@ Route::middleware('auth:api')->group(function () {
 
     // team route list
     Route::apiResource('team', 'TeamController');
+    Route::get('team/{team}/board', 'TeamBoardController@index');
+    Route::post('team/{team}/board', 'TeamBoardController@store');
+    Route::get('team/{team}/board/{board}', 'TeamBoardController@show');
+    Route::put('team/{team}/board/{board}', 'TeamBoardController@update');
+    Route::delete('team/{team}/board/{board}', 'TeamBoardController@destroy');
 });
