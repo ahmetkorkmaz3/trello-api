@@ -6,6 +6,7 @@ use App\Models\Board;
 use App\Models\Card;
 use App\Models\Column;
 use App\Models\Team;
+use App\Models\TeamBoard;
 use App\Policies\BoardPolicy;
 use App\Policies\TeamPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -24,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
         Column::class => BoardPolicy::class,
         Card::class => BoardPolicy::class,
         Team::class => TeamPolicy::class,
+        TeamBoard::class => BoardPolicy::class,
 //        'App\Model\Board' => 'App\Policies\BoardPolicy',
     ];
 
