@@ -5,7 +5,9 @@ namespace App\Providers;
 use App\Models\Board;
 use App\Models\Card;
 use App\Models\Column;
+use App\Models\Team;
 use App\Policies\BoardPolicy;
+use App\Policies\TeamPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -21,6 +23,7 @@ class AuthServiceProvider extends ServiceProvider
         Board::class => BoardPolicy::class,
         Column::class => BoardPolicy::class,
         Card::class => BoardPolicy::class,
+        Team::class => TeamPolicy::class,
 //        'App\Model\Board' => 'App\Policies\BoardPolicy',
     ];
 

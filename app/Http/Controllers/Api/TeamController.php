@@ -4,21 +4,20 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Team\DestroyTeamRequest;
-use App\Http\Requests\Team\IndexTeamRequest;
 use App\Http\Requests\Team\ShowTeamRequest;
 use App\Http\Requests\Team\StoreTeamRequest;
 use App\Http\Requests\Team\UpdateTeamRequest;
 use App\Http\Resources\Team\TeamResource;
 use App\Models\Team;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 
 class TeamController extends Controller
 {
     /**
-     * @param IndexTeamRequest $request
      * @return JsonResponse
      */
-    public function index(IndexTeamRequest $request)
+    public function index()
     {
         return $this->successResponse(TeamResource::collection(auth()->user()->teams), 'User teams', 200);
     }
@@ -45,9 +44,11 @@ class TeamController extends Controller
      * @param ShowTeamRequest $request
      * @param Team $team
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function show(ShowTeamRequest $request, Team $team)
     {
+        $this->authorize('show', $team);
         return $this->successResponse(TeamResource::make($team), 'Team detail', 200);
     }
 
@@ -55,9 +56,11 @@ class TeamController extends Controller
      * @param UpdateTeamRequest $request
      * @param Team $team
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function update(UpdateTeamRequest $request, Team $team)
     {
+        $this->authorize('update', $team);
         try {
             $team->update($request->validated());
             if ($request->has('user_ids')) {
@@ -73,9 +76,11 @@ class TeamController extends Controller
      * @param DestroyTeamRequest $request
      * @param Team $team
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function destroy(DestroyTeamRequest $request, Team $team)
     {
+        $this->authorize('delete', $team);
         try {
             $team->delete();
         } catch (\Exception $exception) {

@@ -80,7 +80,7 @@ class BoardController extends Controller
      */
     public function destroy(DestroyBoardRequest $request, Board $board)
     {
-        $this->authorize('forceDelete', $board);
+        $this->authorize('delete', $board);
         try {
             $board->delete();
         } catch (\Exception $exception) {

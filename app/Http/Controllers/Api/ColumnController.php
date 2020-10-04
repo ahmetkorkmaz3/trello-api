@@ -85,7 +85,7 @@ class ColumnController extends Controller
      */
     public function destroy(DestroyColumnRequest $request, Board $board, Column $column)
     {
-        $this->authorize('forceDelete', $board);
+        $this->authorize('delete', $board);
         try {
             $column->delete();
         } catch (\Exception $exception) {

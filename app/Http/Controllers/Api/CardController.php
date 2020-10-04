@@ -96,7 +96,7 @@ class CardController extends Controller
      */
     public function destroy(DestroyCardRequest $request, Board $board, Column $column, Card $card)
     {
-        $this->authorize('forceDelete', $board);
+        $this->authorize('delete', $board);
 
         try {
             $card->delete();
