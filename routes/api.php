@@ -22,20 +22,14 @@ Route::post('/auth/login', 'AuthController@login');
 Route::middleware('auth:api')->group(function () {
     Route::get('auth/me', 'AuthController@me');
 
+    // Board route list
     Route::apiResource('board', 'BoardController');
 
     // Column route list
-    Route::get('board/{board}/column', 'ColumnController@index');
-    Route::post('board/{board}/column', 'ColumnController@store');
-    Route::get('board/{board}/column/{column}', 'ColumnController@show');
-    Route::put('board/{board}/column/{column}', 'ColumnController@update');
-    Route::delete('board/{board}/column/{column}', 'ColumnController@destroy');
-//    Route::apiResource('column', 'ColumnController')->only('show', 'update', 'destroy');
+    Route::apiResource('board.column', 'ColumnController');
 
     // Card route list
-    Route::get('column/{column}/card', 'CardController@index');
-    Route::post('column/{column}/card', 'CardController@store');
-    Route::apiResource('card', 'CardController')->only('show', 'update', 'destroy');
+    Route::apiResource('board.column.card', 'CardController');
 
     // team route list
     Route::apiResource('team', 'TeamController');
