@@ -25,7 +25,7 @@ class UpdateBoardRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:3'],
-            'user_ids' => ['required', 'array'],
+            'user_ids' => ['nullable', 'array'],
             'user_ids.*' => ['required', 'integer', 'exists:users,id']
         ];
     }

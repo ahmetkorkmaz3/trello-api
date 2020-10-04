@@ -37,7 +37,7 @@ class BoardController extends Controller
         ]);
         $board->users()->attach(auth()->user());
 
-        return $this->successResponse(BoardResource::make($board), 'Board created successfully', 200);
+        return $this->successResponse(BoardResource::make($board), 'Board created successfully', 201);
     }
 
     /**
@@ -56,12 +56,16 @@ class BoardController extends Controller
      * @param UpdateBoardRequest $request
      * @param Board $board
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function update(UpdateBoardRequest $request, Board $board)
     {
+        $this->authorize('update', $board);
         try {
             $board->update($request->validated());
-            $board->users()->sync($request->user_ids);
+            if ($request->has('user_ids')) {
+                $board->users()->sync($request->user_ids);
+            }
         } catch (\Exception $exception) {
             return $this->errorResponse('Board could not updated!', 500);
         }
@@ -72,9 +76,11 @@ class BoardController extends Controller
      * @param DestroyBoardRequest $request
      * @param Board $board
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function destroy(DestroyBoardRequest $request, Board $board)
     {
+        $this->authorize('forceDelete', $board);
         try {
             $board->delete();
         } catch (\Exception $exception) {

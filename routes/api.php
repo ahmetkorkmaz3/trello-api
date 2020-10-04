@@ -27,7 +27,10 @@ Route::middleware('auth:api')->group(function () {
     // Column route list
     Route::get('board/{board}/column', 'ColumnController@index');
     Route::post('board/{board}/column', 'ColumnController@store');
-    Route::apiResource('column', 'ColumnController')->only('show', 'update', 'destroy');
+    Route::get('board/{board}/column/{column}', 'ColumnController@show');
+    Route::put('board/{board}/column/{column}', 'ColumnController@update');
+    Route::delete('board/{board}/column/{column}', 'ColumnController@destroy');
+//    Route::apiResource('column', 'ColumnController')->only('show', 'update', 'destroy');
 
     // Card route list
     Route::get('column/{column}/card', 'CardController@index');

@@ -4,24 +4,25 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Column\DestroyColumnRequest;
-use App\Http\Requests\Column\IndexColumnRequest;
 use App\Http\Requests\Column\ShowColumnRequest;
 use App\Http\Requests\Column\StoreColumnRequest;
 use App\Http\Requests\Column\UpdateColumnRequest;
 use App\Http\Resources\Column\ColumnResource;
 use App\Models\Board;
 use App\Models\Column;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 
 class ColumnController extends Controller
 {
     /**
-     * @param IndexColumnRequest $request
      * @param Board $board
      * @return JsonResponse
+     * @throws AuthorizationException
      */
-    public function index(IndexColumnRequest $request, Board $board)
+    public function index(Board $board)
     {
+        $this->authorize('view', $board);
         return $this->successResponse(ColumnResource::collection($board->columns), 'Board columns', 200);
     }
 
@@ -29,9 +30,11 @@ class ColumnController extends Controller
      * @param StoreColumnRequest $request
      * @param Board $board
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function store(StoreColumnRequest $request, Board $board)
     {
+        $this->authorize('create', $board);
         try {
             $column = $board->columns()->create([
                 'name' => $request->name,
@@ -44,21 +47,27 @@ class ColumnController extends Controller
 
     /**
      * @param ShowColumnRequest $request
+     * @param Board $board
      * @param Column $column
      * @return JsonResponse
+     * @throws AuthorizationException
      */
-    public function show(ShowColumnRequest $request, Column $column)
+    public function show(ShowColumnRequest $request, Board $board, Column $column)
     {
+        $this->authorize('show', $board);
         return $this->successResponse(ColumnResource::make($column), 'Column Detail', 200);
     }
 
     /**
      * @param UpdateColumnRequest $request
+     * @param Board $board
      * @param Column $column
      * @return JsonResponse
+     * @throws AuthorizationException
      */
-    public function update(UpdateColumnRequest $request, Column $column)
+    public function update(UpdateColumnRequest $request, Board $board, Column $column)
     {
+        $this->authorize('update', $board);
         try {
             $column->update($request->validated());
         } catch (\Exception $exception) {
@@ -69,11 +78,14 @@ class ColumnController extends Controller
 
     /**
      * @param DestroyColumnRequest $request
+     * @param Board $board
      * @param Column $column
      * @return JsonResponse
+     * @throws AuthorizationException
      */
-    public function destroy(DestroyColumnRequest $request, Column $column)
+    public function destroy(DestroyColumnRequest $request, Board $board, Column $column)
     {
+        $this->authorize('forceDelete', $board);
         try {
             $column->delete();
         } catch (\Exception $exception) {
