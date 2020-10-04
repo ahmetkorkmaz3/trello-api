@@ -8,7 +8,6 @@ use App\Http\Requests\Team\Board\UpdateBoardRequest;
 use App\Models\Board;
 use App\Models\Team;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class TeamBoardController extends Controller
 {

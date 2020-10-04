@@ -11,8 +11,6 @@ use App\Http\Resources\Board\BoardResource;
 use App\Models\Board;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class BoardController extends Controller
 {

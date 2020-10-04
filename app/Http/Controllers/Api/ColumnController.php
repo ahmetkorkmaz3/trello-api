@@ -12,7 +12,6 @@ use App\Http\Resources\Column\ColumnResource;
 use App\Models\Board;
 use App\Models\Column;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class ColumnController extends Controller
 {

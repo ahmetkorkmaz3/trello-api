@@ -11,7 +11,6 @@ use App\Http\Requests\Team\UpdateTeamRequest;
 use App\Http\Resources\Team\TeamResource;
 use App\Models\Team;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {

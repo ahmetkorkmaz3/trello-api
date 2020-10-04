@@ -9,11 +9,9 @@ use App\Http\Requests\Card\StoreCardRequest;
 use App\Http\Requests\Card\UpdateCardRequest;
 use App\Http\Requests\Column\IndexColumnRequest;
 use App\Http\Resources\Card\CardResource;
-use App\Models\Board;
 use App\Models\Card;
 use App\Models\Column;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class CardController extends Controller
 {
