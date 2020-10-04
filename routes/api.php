@@ -13,11 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/test', 'HomeController@test');
-
 Route::post('/auth/register', 'AuthController@register');
 Route::post('/auth/login', 'AuthController@login');
-
 
 Route::middleware('auth:api')->group(function () {
     Route::get('auth/me', 'AuthController@me');

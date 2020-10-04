@@ -21,8 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="66491a87-7a9b-4251-9ea6-035f5d4a037b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/TeamBoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/TeamBoardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/HomeController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -218,7 +217,7 @@
       <workItem from="1600771341554" duration="2000" />
       <workItem from="1601217197382" duration="1286000" />
       <workItem from="1601287835736" duration="3000" />
-      <workItem from="1601815652896" duration="10099000" />
+      <workItem from="1601815652896" duration="10258000" />
     </task>
     <servers />
   </component>
@@ -274,9 +273,9 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="673" y="322" width="563" height="470" key="refactoring.ChangeSignatureDialog/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600629693291" />
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1601848307721">
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1601849219338">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1601848307721" />
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1601849219338" />
   </component>
 </project>
