@@ -74,6 +74,7 @@ class TeamBoardController extends Controller
      * @param Team $team
      * @param Board $board
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function destroy(Team $team, Board $board)
     {
