@@ -18,6 +18,7 @@ Route::post('/auth/login', 'AuthController@login');
 
 Route::middleware('auth:api')->group(function () {
     Route::get('auth/me', 'AuthController@me');
+    Route::put('auth/change-password', 'AuthController@changePassword');
 
     // Board route list
     Route::apiResource('board', 'BoardController');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\ChangePasswordRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Resources\Auth\MeResource;
@@ -11,6 +12,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -47,6 +49,24 @@ class AuthController extends Controller
     public function me(Request $request)
     {
         return $this->successResponse(MeResource::make(auth()->user()), 'Auth user', 200);
+    }
+
+    /**
+     * @param ChangePasswordRequest $request
+     * @return JsonResponse
+     */
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        if (!Hash::check($request->old_password, auth()->user()->password)) {
+            return $this->errorResponse('Old password not same password', 400);
+        }
+
+        try {
+            auth()->user()->update(['password' => Hash::make($request->password)]);
+        } catch (\Exception $exception) {
+            return $this->errorResponse('Password could not change', 500);
+        }
+        return $this->successResponse(null, 'Password change', 200);
     }
 
 }
