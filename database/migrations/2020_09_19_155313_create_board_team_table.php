@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBoardTeamsTable extends Migration
+class CreateBoardTeamTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBoardTeamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('board_teams', function (Blueprint $table) {
+        Schema::create('board_team', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('board_id');
             $table->unsignedBigInteger('team_id');

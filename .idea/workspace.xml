@@ -20,9 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66491a87-7a9b-4251-9ea6-035f5d4a037b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/trello-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/trello-api.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_155313_create_board_teams_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_155313_create_board_team_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -220,7 +220,7 @@
       <workItem from="1601287835736" duration="3000" />
       <workItem from="1601815652896" duration="10342000" />
       <workItem from="1601893473673" duration="7000" />
-      <workItem from="1601915569769" duration="1883000" />
+      <workItem from="1601915569769" duration="4539000" />
     </task>
     <servers />
   </component>
@@ -276,9 +276,9 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="673" y="322" width="563" height="470" key="refactoring.ChangeSignatureDialog/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600629693291" />
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1601916037926">
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1601922309192">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1601916037926" />
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1601922309192" />
   </component>
 </project>
