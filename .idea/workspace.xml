@@ -20,9 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66491a87-7a9b-4251-9ea6-035f5d4a037b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/trello-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/trello-api.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,8 +188,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Http" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Api" />
+      <recent name="$PROJECT_DIR$/app/Http" />
       <recent name="$PROJECT_DIR$/app/Models" />
     </key>
   </component>
@@ -220,6 +219,7 @@
       <workItem from="1601815652896" duration="10342000" />
       <workItem from="1601893473673" duration="7000" />
       <workItem from="1601915569769" duration="4539000" />
+      <workItem from="1602172984897" duration="6422000" />
     </task>
     <servers />
   </component>
@@ -275,9 +275,9 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="673" y="322" width="563" height="470" key="refactoring.ChangeSignatureDialog/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600629693291" />
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1601927329717">
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1602149619213">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1601927329717" />
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1602149619213" />
   </component>
 </project>
