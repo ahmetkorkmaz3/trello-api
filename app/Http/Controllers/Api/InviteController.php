@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Invite\InviteResource;
 use App\Models\Invite;
 use Illuminate\Http\Request;
 

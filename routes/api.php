@@ -22,6 +22,7 @@ Route::middleware('auth:api')->group(function () {
 
     // Board route list
     Route::apiResource('board', 'BoardController');
+    Route::post('board/{board}/invite', 'BoardController@invite');
 
     // Column route list
     Route::apiResource('board.column', 'ColumnController');
@@ -31,7 +32,14 @@ Route::middleware('auth:api')->group(function () {
 
     // team route list
     Route::apiResource('team', 'TeamController');
+    Route::post('team/{team}/invite', 'TeamController@invite');
 
     // Team Board route list
     Route::apiResource('team.board', 'TeamBoardController');
+
+    Route::get('board-requests', 'BoardRequestController@index');
+    Route::put('board-requests/{boardRequest}', 'BoardRequestController@update');
+
+    Route::get('team-requests', 'TeamRequestController@index');
+    Route::put('team-requests/{teamRequest}', 'TeamRequestController@update');
 });

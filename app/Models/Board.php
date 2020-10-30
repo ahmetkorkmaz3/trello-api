@@ -27,4 +27,9 @@ class Board extends Model
     {
         return $this->belongsToMany(Team::class, 'board_team');
     }
+
+    public function requests()
+    {
+        return $this->hasMany(BoardRequest::class);
+    }
 }

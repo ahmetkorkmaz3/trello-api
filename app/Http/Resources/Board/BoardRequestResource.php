@@ -2,11 +2,9 @@
 
 namespace App\Http\Resources\Board;
 
-use App\Http\Resources\Column\ColumnResource;
-use App\Http\Resources\UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BoardResource extends JsonResource
+class BoardRequestResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,10 +16,12 @@ class BoardResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'photo_id' => $this->photo_id,
-            'columns' => ColumnResource::collection($this->columns),
-            'users' => UserResource::collection($this->users),
+            'email' => $this->email,
+            'board' => $this->board,
+            'user' => $this->user,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }

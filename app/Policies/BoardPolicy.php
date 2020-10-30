@@ -45,4 +45,14 @@ class BoardPolicy
     {
         return $board->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
     }
+
+    /**
+     * @param User $user
+     * @param Board $board
+     * @return Response
+     */
+    public function invite(User $user, Board $board)
+    {
+        return $board->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
+    }
 }

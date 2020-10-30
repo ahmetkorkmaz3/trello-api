@@ -48,4 +48,14 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function boardRequests()
+    {
+        return $this->hasMany(BoardRequest::class);
+    }
+
+    public function teamRequests()
+    {
+        return $this->hasMany(TeamRequest::class);
+    }
 }

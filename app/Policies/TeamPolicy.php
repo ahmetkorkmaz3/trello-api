@@ -49,6 +49,15 @@ class TeamPolicy
     public function delete(User $user, Team $team)
     {
         return $team->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
+    }
 
+    /**
+     * @param User $user
+     * @param Team $team
+     * @return Response
+     */
+    public function invite(User $user, Team $team)
+    {
+        return $team->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
     }
 }

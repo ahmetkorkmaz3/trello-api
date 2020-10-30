@@ -22,4 +22,9 @@ class Team extends Model
     {
         return $this->belongsToMany(Board::class, 'board_teams');
     }
+
+    public function requests()
+    {
+        return $this->hasMany(TeamRequest::class);
+    }
 }

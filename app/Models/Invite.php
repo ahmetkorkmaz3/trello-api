@@ -54,4 +54,14 @@ class Invite extends Model
     {
         return $this->update(['status' => self::STATUS_COMPLETED]);
     }
+
+    public function boardRequest()
+    {
+        return $this->belongsTo(BoardRequest::class);
+    }
+
+    public function teamRequest()
+    {
+        return $this->belongsTo(TeamRequest::class);
+    }
 }
