@@ -15,19 +15,9 @@ class CreateBoardTeamTable extends Migration
     {
         Schema::create('board_team', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('board_id');
-            $table->unsignedBigInteger('team_id');
+            $table->foreignId('board_id')->constrained('boards');
+            $table->foreignId('team_id')->constrained('teams');
             $table->timestamps();
-
-            $table->foreign('board_id')
-                ->references('id')
-                ->on('boards')
-                ->onDelete('cascade');
-
-            $table->foreign('team_id')
-                ->references('id')
-                ->on('teams')
-                ->onDelete('cascade');
         });
     }
 

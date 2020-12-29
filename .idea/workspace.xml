@@ -20,8 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66491a87-7a9b-4251-9ea6-035f5d4a037b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_142913_create_columns_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_142913_create_columns_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_143032_create_cards_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_143032_create_cards_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_151003_create_board_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_151003_create_board_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_154920_create_team_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_154920_create_team_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_155313_create_board_team_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_155313_create_board_team_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,6 +175,7 @@
       <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
     </include_path>
   </component>
   <component name="ProjectId" id="1hjMGtVbEJ3kFgBaej2lLJCh0g9" />
@@ -222,6 +229,8 @@
       <workItem from="1602172984897" duration="6422000" />
       <workItem from="1602227453720" duration="7000" />
       <workItem from="1602528684140" duration="154000" />
+      <workItem from="1609245352116" duration="186000" />
+      <workItem from="1609245542728" duration="216000" />
     </task>
     <servers />
   </component>
@@ -239,47 +248,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="555" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600604382010">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="555" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600604382010" />
-    <state x="745" y="225" width="419" height="671" key="#com.intellij.ide.util.MemberChooser" timestamp="1601840884149">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="745" y="225" width="419" height="671" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1601840884149" />
-    <state x="1151" y="27" width="720" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600535193322">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="1151" y="27" width="720" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600535193322" />
-    <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601848474740">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="693" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1601848474740" />
-    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1600524025954">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600524025954" />
-    <state x="449" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1601916525715">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="449" y="188" width="1022" height="737" key="SettingsEditor/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1601916525715" />
-    <state x="739" y="466" width="431" height="181" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600540481772">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="739" y="466" width="431" height="181" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600540481772" />
-    <state x="652" y="276" width="616" height="554" key="find.popup" timestamp="1601841625144">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="652" y="276" width="616" height="554" key="find.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1601841625144" />
-    <state x="673" y="322" width="563" height="470" key="refactoring.ChangeSignatureDialog" timestamp="1600629693291">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="673" y="322" width="563" height="470" key="refactoring.ChangeSignatureDialog/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1600629693291" />
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1602528830721">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1366.768@0.27.1920.1053" timestamp="1602528830721" />
   </component>
 </project>
