@@ -18,7 +18,7 @@ class BoardPolicy
      */
     public function view(User $user, Board $board): bool
     {
-        return $board->users()->whereIn('user_id', [$user->id])->exists();
+        return $board->users()->where('user_id', $user->id)->exists();
     }
 
     /**
@@ -28,7 +28,7 @@ class BoardPolicy
      */
     public function create(User $user, Board $board): bool
     {
-        return $board->users()->whereIn('user_id', [$user->id])->exists();
+        return $board->users()->where('user_id', $user->id)->exists();
     }
 
     /**
@@ -38,16 +38,16 @@ class BoardPolicy
      */
     public function update(User $user, Board $board): bool
     {
-        return $board->users()->whereIn('user_id', [$user->id])->exists();
+        return $board->users()->where('user_id', $user->id)->exists();
     }
 
     /**
      * @param User $user
      * @param Board $board
-     * @return Response
+     * @return bool
      */
-    public function delete(User $user, Board $board)
+    public function delete(User $user, Board $board): bool
     {
-        return $board->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
+        return $board->users()->where('user_id', $user->id)->exists();
     }
 }
