@@ -24,8 +24,6 @@ class StoreTeamRequest extends FormRequest
             'name' => ['required', 'string'],
             'description' => ['nullable', 'string', 'max:500'],
             'website' => ['nullable', 'url'],
-            'user_ids' => ['nullable', 'array'],
-            'user_ids.*' => ['integer', 'exists:users,id']
         ];
     }
 }

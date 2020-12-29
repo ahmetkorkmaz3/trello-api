@@ -14,41 +14,40 @@ class TeamPolicy
     /**
      * @param User $user
      * @param Team $team
-     * @return Response
+     * @return bool
      */
-    public function view(User $user, Team $team)
+    public function view(User $user, Team $team): bool
     {
-        return $team->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
+        return $team->users()->where('user_id', $user->id)->exists();
     }
 
     /**
      * @param User $user
      * @param Team $team
-     * @return Response
+     * @return bool
      */
-    public function create(User $user, Team $team)
+    public function create(User $user, Team $team): bool
     {
-        return $team->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
+        return $team->users()->where('user_id', $user->id)->exists();
     }
 
     /**
      * @param User $user
      * @param Team $team
-     * @return Response
+     * @return bool
      */
-    public function update(User $user, Team $team)
+    public function update(User $user, Team $team): bool
     {
-        return $team->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
+        return $team->users()->where('user_id', $user->id)->exists();
     }
 
     /**
      * @param User $user
      * @param Team $team
-     * @return Response
+     * @return bool
      */
-    public function delete(User $user, Team $team)
+    public function delete(User $user, Team $team): bool
     {
-        return $team->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
-
+        return $team->users()->where('user_id', $user->id)->exists();
     }
 }

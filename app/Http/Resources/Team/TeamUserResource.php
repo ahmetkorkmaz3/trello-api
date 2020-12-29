@@ -5,11 +5,9 @@ namespace App\Http\Resources\Team;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Request;
 
-class TeamResource extends JsonResource
+class TeamUserResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
-     *
      * @param Request $request
      * @return array
      */
@@ -17,12 +15,13 @@ class TeamResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'description' => $this->description,
-            'website' => $this->website,
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'full_name' => $this->fullname,
+            'username' => $this->username,
+            'email' => $this->email,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'users' => TeamUserResource::collection($this->users),
         ];
     }
 }

@@ -31,9 +31,6 @@ class TeamController extends Controller
         try {
             $team = Team::create($request->validated());
             $team->users()->attach(auth()->user());
-            if ($request->has('user_ids')) {
-                $team->users()->sync($request->user_ids);
-            }
         } catch (\Exception $exception) {
             return $this->errorResponse('Team could not be created', 500);
         }
@@ -47,7 +44,7 @@ class TeamController extends Controller
      */
     public function show(Team $team): JsonResponse
     {
-        $this->authorize('show', $team);
+        $this->authorize('view', $team);
         return $this->successResponse(TeamResource::make($team), 'Team detail', 200);
     }
 
@@ -62,9 +59,6 @@ class TeamController extends Controller
         $this->authorize('update', $team);
         try {
             $team->update($request->validated());
-            if ($request->has('user_ids')) {
-                $team->users()->sync($request->user_ids);
-            }
         } catch (\Exception $exception) {
             return $this->errorResponse('Team could not updated!', 500);
         }
