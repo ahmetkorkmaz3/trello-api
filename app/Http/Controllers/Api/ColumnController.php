@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Column\DestroyColumnRequest;
-use App\Http\Requests\Column\ShowColumnRequest;
 use App\Http\Requests\Column\StoreColumnRequest;
 use App\Http\Requests\Column\UpdateColumnRequest;
 use App\Http\Resources\Column\ColumnResource;
@@ -42,7 +41,7 @@ class ColumnController extends Controller
         } catch (\Exception $exception) {
             return $this->errorResponse('Column could not be created!' , 500);
         }
-        return $this->successResponse(ColumnResource::collection($column), 'Column created successfully', 201);
+        return $this->successResponse(ColumnResource::make($column), 'Column created successfully', 201);
     }
 
     /**
@@ -53,7 +52,7 @@ class ColumnController extends Controller
      */
     public function show(Board $board, Column $column): JsonResponse
     {
-        $this->authorize('show', $board);
+        $this->authorize('view', $board);
         return $this->successResponse(ColumnResource::make($column), 'Column Detail', 200);
     }
 

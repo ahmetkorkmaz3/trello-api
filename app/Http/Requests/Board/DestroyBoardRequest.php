@@ -14,4 +14,12 @@ class DestroyBoardRequest extends FormRequest
     {
         return Auth::check();
     }
+
+    /**
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [];
+    }
 }

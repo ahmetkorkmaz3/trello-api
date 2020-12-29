@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Card\DestroyCardRequest;
-use App\Http\Requests\Card\ShowCardRequest;
 use App\Http\Requests\Card\StoreCardRequest;
 use App\Http\Requests\Card\UpdateCardRequest;
-use App\Http\Requests\Column\IndexColumnRequest;
 use App\Http\Resources\Card\CardResource;
 use App\Models\Board;
 use App\Models\Card;
@@ -60,7 +58,7 @@ class CardController extends Controller
      */
     public function show(Board $board, Column $column, Card $card): JsonResponse
     {
-        $this->authorize('show', $board);
+        $this->authorize('view', $board);
 
         return $this->successResponse(CardResource::make($card), 'Card details', 200);
     }

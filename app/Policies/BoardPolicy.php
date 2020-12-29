@@ -14,26 +14,31 @@ class BoardPolicy
     /**
      * @param User $user
      * @param Board $board
-     * @return Response
+     * @return bool
      */
-    public function view(User $user, Board $board)
+    public function view(User $user, Board $board): bool
     {
-        return $board->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
-    }
-
-    public function create(User $user, Board $board)
-    {
-        return $board->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
+        return $board->users()->whereIn('user_id', [$user->id])->exists();
     }
 
     /**
      * @param User $user
      * @param Board $board
-     * @return Response
+     * @return bool
      */
-    public function update(User $user, Board $board)
+    public function create(User $user, Board $board): bool
     {
-        return $board->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
+        return $board->users()->whereIn('user_id', [$user->id])->exists();
+    }
+
+    /**
+     * @param User $user
+     * @param Board $board
+     * @return bool
+     */
+    public function update(User $user, Board $board): bool
+    {
+        return $board->users()->whereIn('user_id', [$user->id])->exists();
     }
 
     /**

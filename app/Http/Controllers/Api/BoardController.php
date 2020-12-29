@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Board\DestroyBoardRequest;
-use App\Http\Requests\Board\ShowBoardRequest;
 use App\Http\Requests\Board\StoreBoardRequest;
 use App\Http\Requests\Board\UpdateBoardRequest;
 use App\Http\Resources\Board\BoardResource;
