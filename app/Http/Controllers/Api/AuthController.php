@@ -7,7 +7,6 @@ use App\Http\Requests\Auth\ChangePasswordRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Resources\Auth\MeResource;
-use App\Http\Resources\Auth\RegisterResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -46,7 +45,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function me(Request $request)
+    public function me(Request $request): JsonResponse
     {
         return $this->successResponse(MeResource::make(auth()->user()), 'Auth user', 200);
     }
