@@ -30,9 +30,7 @@ class TeamBoardPolicy
      */
     public function viewAdvanced(User $user, Team $team, Board $board)
     {
-        $is_team_user = $team->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
-        $is_board_user = $board->users()->whereIn('user_id', [$user->id])->exists() ? Response::allow() : Response::deny();
-        return ($is_team_user and $is_board_user) ? Response::allow() : Response::deny();
+        return true;
     }
 
     /**

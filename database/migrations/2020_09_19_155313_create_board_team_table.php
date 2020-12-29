@@ -13,7 +13,7 @@ class CreateBoardTeamTable extends Migration
      */
     public function up()
     {
-        Schema::create('board_team', function (Blueprint $table) {
+        Schema::create('board_teams', function (Blueprint $table) {
             $table->id();
             $table->foreignId('board_id')->constrained('boards');
             $table->foreignId('team_id')->constrained('teams');

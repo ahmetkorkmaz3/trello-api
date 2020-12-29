@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Team\Board\StoreBoardRequest;
 use App\Http\Requests\Team\Board\UpdateBoardRequest;
+use App\Http\Resources\Board\BoardResource;
 use App\Models\Board;
 use App\Models\Team;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -17,10 +18,10 @@ class TeamBoardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function index(Team $team)
+    public function index(Team $team): JsonResponse
     {
         $this->authorize('view', $team);
-        return $this->successResponse($team->boards, 'Auth user team boards', 200);
+        return $this->successResponse(BoardResource::collection($team->boards), 'Auth user team boards', 200);
     }
 
     /**
@@ -29,15 +30,11 @@ class TeamBoardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(StoreBoardRequest $request, Team $team)
+    public function store(StoreBoardRequest $request, Team $team): JsonResponse
     {
         $this->authorize('create', $team);
-        try {
-            $board = $team->boards()->create($request->validated());
-        } catch (\Exception $exception) {
-            return $this->errorResponse('Board could not created', 500);
-        }
-        return $this->successResponse($board, 'Board created successfully', 201);
+        $board = $team->boards()->create($request->validated());
+        return $this->successResponse(BoardResource::make($board), 'Board created successfully', 201);
     }
 
     /**
@@ -46,8 +43,9 @@ class TeamBoardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function show(Team $team, Board $board)
+    public function show(Team $team, Board $board): JsonResponse
     {
+        // TODO: not working check this method
         $this->authorize('viewAdvanced', [$team, $board]);
         return $this->successResponse($board, 'Board detail', 200);
     }
@@ -59,7 +57,7 @@ class TeamBoardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(UpdateBoardRequest $request, Team $team, Board $board)
+    public function update(UpdateBoardRequest $request, Team $team, Board $board): JsonResponse
     {
         $this->authorize('update', [$team, $board]);
         try {
@@ -76,7 +74,7 @@ class TeamBoardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function destroy(Team $team, Board $board)
+    public function destroy(Team $team, Board $board): JsonResponse
     {
         $this->authorize('delete', [$team, $board]);
         try {
