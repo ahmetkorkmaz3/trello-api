@@ -20,7 +20,7 @@ class ColumnController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function index(Board $board)
+    public function index(Board $board): JsonResponse
     {
         $this->authorize('view', $board);
         return $this->successResponse(ColumnResource::collection($board->columns), 'Board columns', 200);
@@ -32,7 +32,7 @@ class ColumnController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(StoreColumnRequest $request, Board $board)
+    public function store(StoreColumnRequest $request, Board $board): JsonResponse
     {
         $this->authorize('create', $board);
         try {
@@ -46,13 +46,12 @@ class ColumnController extends Controller
     }
 
     /**
-     * @param ShowColumnRequest $request
      * @param Board $board
      * @param Column $column
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function show(ShowColumnRequest $request, Board $board, Column $column)
+    public function show(Board $board, Column $column): JsonResponse
     {
         $this->authorize('show', $board);
         return $this->successResponse(ColumnResource::make($column), 'Column Detail', 200);
@@ -65,7 +64,7 @@ class ColumnController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(UpdateColumnRequest $request, Board $board, Column $column)
+    public function update(UpdateColumnRequest $request, Board $board, Column $column): JsonResponse
     {
         $this->authorize('update', $board);
         try {
@@ -83,7 +82,7 @@ class ColumnController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function destroy(DestroyColumnRequest $request, Board $board, Column $column)
+    public function destroy(DestroyColumnRequest $request, Board $board, Column $column): JsonResponse
     {
         $this->authorize('delete', $board);
         try {

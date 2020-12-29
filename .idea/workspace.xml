@@ -20,14 +20,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66491a87-7a9b-4251-9ea6-035f5d4a037b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_142913_create_columns_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_142913_create_columns_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_143032_create_cards_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_143032_create_cards_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_151003_create_board_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_151003_create_board_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_154920_create_team_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_154920_create_team_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_155313_create_board_team_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_155313_create_board_team_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/BoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BoardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ColumnController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ColumnController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/TeamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/TeamController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Auth/ChangePasswordRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Auth/ChangePasswordRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Auth/LoginRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Auth/LoginRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Auth/RegisterRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Auth/RegisterRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Board/DestroyBoardRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Board/ShowBoardRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Board/StoreBoardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Board/StoreBoardRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Board/UpdateBoardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Board/UpdateBoardRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/BoardUser/StoreBoardUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/BoardUser/StoreBoardUserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Card/DestroyCardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Card/DestroyCardRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Card/IndexCardRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Card/ShowCardRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Card/StoreCardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Card/StoreCardRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Card/UpdateCardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Card/UpdateCardRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Column/DestroyColumnRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Column/DestroyColumnRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Column/ShowColumnRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Column/StoreColumnRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Column/StoreColumnRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Column/UpdateColumnRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Column/UpdateColumnRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Team/Board/StoreBoardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Team/Board/StoreBoardRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Team/Board/UpdateBoardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Team/Board/UpdateBoardRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Team/DestroyTeamRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Team/DestroyTeamRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Team/ShowTeamRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Team/ShowTeamRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Team/StoreTeamRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Team/StoreTeamRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Team/UpdateTeamRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Team/UpdateTeamRequest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,13 +207,16 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="/var/www/html/tradegram" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Api" />
       <recent name="$PROJECT_DIR$/app/Http" />
@@ -230,7 +253,7 @@
       <workItem from="1602227453720" duration="7000" />
       <workItem from="1602528684140" duration="154000" />
       <workItem from="1609245352116" duration="186000" />
-      <workItem from="1609245542728" duration="216000" />
+      <workItem from="1609245542728" duration="2464000" />
     </task>
     <servers />
   </component>

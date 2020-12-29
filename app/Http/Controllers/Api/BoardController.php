@@ -17,7 +17,7 @@ class BoardController extends Controller
     /**
      * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         return $this->successResponse(
             BoardResource::collection(auth()->user()->boards),
@@ -30,7 +30,7 @@ class BoardController extends Controller
      * @param StoreBoardRequest $request
      * @return JsonResponse
      */
-    public function store(StoreBoardRequest $request)
+    public function store(StoreBoardRequest $request): JsonResponse
     {
         $board = Board::create([
             'name' => $request->name
@@ -41,12 +41,11 @@ class BoardController extends Controller
     }
 
     /**
-     * @param ShowBoardRequest $request
      * @param Board $board
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function show(ShowBoardRequest $request, Board $board)
+    public function show(Board $board): JsonResponse
     {
         $this->authorize('view', $board);
         return $this->successResponse(BoardResource::make($board), 'Board Details', 200);
@@ -58,7 +57,7 @@ class BoardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(UpdateBoardRequest $request, Board $board)
+    public function update(UpdateBoardRequest $request, Board $board): JsonResponse
     {
         $this->authorize('update', $board);
         try {
@@ -78,7 +77,7 @@ class BoardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function destroy(DestroyBoardRequest $request, Board $board)
+    public function destroy(DestroyBoardRequest $request, Board $board): JsonResponse
     {
         $this->authorize('delete', $board);
         try {

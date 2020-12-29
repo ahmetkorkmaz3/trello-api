@@ -23,7 +23,7 @@ class CardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function index(Board $board, Column $column)
+    public function index(Board $board, Column $column): JsonResponse
     {
         $this->authorize('view', $board);
         return $this->successResponse(CardResource::collection($column->cards), 'Card list', 200);
@@ -36,7 +36,7 @@ class CardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(StoreCardRequest $request, Board $board, Column $column)
+    public function store(StoreCardRequest $request, Board $board, Column $column): JsonResponse
     {
         $this->authorize('create', $board);
         try {
@@ -52,14 +52,13 @@ class CardController extends Controller
     }
 
     /**
-     * @param ShowCardRequest $request
      * @param Board $board
      * @param Column $column
      * @param Card $card
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function show(ShowCardRequest $request, Board $board, Column $column, Card $card)
+    public function show(Board $board, Column $column, Card $card): JsonResponse
     {
         $this->authorize('show', $board);
 
@@ -74,7 +73,7 @@ class CardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(UpdateCardRequest $request, Board $board, Column $column, Card $card)
+    public function update(UpdateCardRequest $request, Board $board, Column $column, Card $card): JsonResponse
     {
         $this->authorize('update', $board);
 
@@ -94,7 +93,7 @@ class CardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function destroy(DestroyCardRequest $request, Board $board, Column $column, Card $card)
+    public function destroy(DestroyCardRequest $request, Board $board, Column $column, Card $card): JsonResponse
     {
         $this->authorize('delete', $board);
 
