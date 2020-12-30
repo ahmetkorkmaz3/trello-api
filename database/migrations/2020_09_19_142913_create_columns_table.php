@@ -16,13 +16,8 @@ class CreateColumnsTable extends Migration
         Schema::create('columns', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('board_id');
+            $table->foreignId('board_id')->constrained('boards');
             $table->timestamps();
-
-            $table->foreign('board_id')
-                ->references('id')
-                ->on('boards')
-                ->onDelete('cascade');
         });
     }
 

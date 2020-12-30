@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Column\DestroyColumnRequest;
-use App\Http\Requests\Column\ShowColumnRequest;
 use App\Http\Requests\Column\StoreColumnRequest;
 use App\Http\Requests\Column\UpdateColumnRequest;
 use App\Http\Resources\Column\ColumnResource;
@@ -20,9 +19,10 @@ class ColumnController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function index(Board $board)
+    public function index(Board $board): JsonResponse
     {
         $this->authorize('view', $board);
+        $board->columns->load('cards');
         return $this->successResponse(ColumnResource::collection($board->columns), 'Board columns', 200);
     }
 
@@ -32,7 +32,7 @@ class ColumnController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(StoreColumnRequest $request, Board $board)
+    public function store(StoreColumnRequest $request, Board $board): JsonResponse
     {
         $this->authorize('create', $board);
         try {
@@ -42,19 +42,19 @@ class ColumnController extends Controller
         } catch (\Exception $exception) {
             return $this->errorResponse('Column could not be created!' , 500);
         }
-        return $this->successResponse(ColumnResource::collection($column), 'Column created successfully', 201);
+        return $this->successResponse(ColumnResource::make($column), 'Column created successfully', 201);
     }
 
     /**
-     * @param ShowColumnRequest $request
      * @param Board $board
      * @param Column $column
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function show(ShowColumnRequest $request, Board $board, Column $column)
+    public function show(Board $board, Column $column): JsonResponse
     {
-        $this->authorize('show', $board);
+        $this->authorize('view', $board);
+        $column->load('cards');
         return $this->successResponse(ColumnResource::make($column), 'Column Detail', 200);
     }
 
@@ -65,7 +65,7 @@ class ColumnController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(UpdateColumnRequest $request, Board $board, Column $column)
+    public function update(UpdateColumnRequest $request, Board $board, Column $column): JsonResponse
     {
         $this->authorize('update', $board);
         try {
@@ -83,7 +83,7 @@ class ColumnController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function destroy(DestroyColumnRequest $request, Board $board, Column $column)
+    public function destroy(DestroyColumnRequest $request, Board $board, Column $column): JsonResponse
     {
         $this->authorize('delete', $board);
         try {
