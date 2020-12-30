@@ -46,8 +46,9 @@ class TeamBoardController extends Controller
     public function show(Team $team, Board $board): JsonResponse
     {
         // TODO: not working check this method
-        $this->authorize('viewAdvanced', [$team, $board]);
-        return $this->successResponse($board, 'Board detail', 200);
+        $this->authorize('view', $team);
+        $board->load('columns');
+        return $this->successResponse(BoardResource::make($board), 'Board detail', 200);
     }
 
     /**
@@ -59,13 +60,13 @@ class TeamBoardController extends Controller
      */
     public function update(UpdateBoardRequest $request, Team $team, Board $board): JsonResponse
     {
-        $this->authorize('update', [$team, $board]);
+        $this->authorize('update', $team);
         try {
             $board->update($request->validated());
         } catch (\Exception $exception) {
             return $this->errorResponse('Board could not updated!', 500);
         }
-        return $this->successResponse($board, 'Board updated successfully', 200);
+        return $this->successResponse(BoardResource::make($board), 'Board updated successfully', 200);
     }
 
     /**
@@ -76,7 +77,7 @@ class TeamBoardController extends Controller
      */
     public function destroy(Team $team, Board $board): JsonResponse
     {
-        $this->authorize('delete', [$team, $board]);
+        $this->authorize('delete', $team);
         try {
             $board->delete();
         } catch (\Exception $exception) {

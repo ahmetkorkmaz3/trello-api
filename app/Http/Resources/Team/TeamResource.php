@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Team;
 
+use App\Http\Resources\Board\BoardResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Request;
 
@@ -22,6 +23,7 @@ class TeamResource extends JsonResource
             'website' => $this->website,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'boards' => BoardResource::collection($this->whenLoaded('boards')),
             'users' => TeamUserResource::collection($this->whenLoaded('users')),
         ];
     }
