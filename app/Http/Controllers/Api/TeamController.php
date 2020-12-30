@@ -23,7 +23,7 @@ class TeamController extends Controller
     /**
      * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         return $this->successResponse(TeamResource::collection(auth()->user()->teams), 'User teams', 200);
     }
@@ -32,14 +32,11 @@ class TeamController extends Controller
      * @param StoreTeamRequest $request
      * @return JsonResponse
      */
-    public function store(StoreTeamRequest $request)
+    public function store(StoreTeamRequest $request): JsonResponse
     {
         try {
             $team = Team::create($request->validated());
             $team->users()->attach(auth()->user());
-            if ($request->has('user_ids')) {
-                $team->users()->sync($request->user_ids);
-            }
         } catch (\Exception $exception) {
             return $this->errorResponse('Team could not be created', 500);
         }
@@ -47,14 +44,14 @@ class TeamController extends Controller
     }
 
     /**
-     * @param ShowTeamRequest $request
      * @param Team $team
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function show(ShowTeamRequest $request, Team $team)
+    public function show(Team $team): JsonResponse
     {
-        $this->authorize('show', $team);
+        $this->authorize('view', $team);
+        $team->load('boards');
         return $this->successResponse(TeamResource::make($team), 'Team detail', 200);
     }
 
@@ -64,14 +61,11 @@ class TeamController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(UpdateTeamRequest $request, Team $team)
+    public function update(UpdateTeamRequest $request, Team $team): JsonResponse
     {
         $this->authorize('update', $team);
         try {
             $team->update($request->validated());
-            if ($request->has('user_ids')) {
-                $team->users()->sync($request->user_ids);
-            }
         } catch (\Exception $exception) {
             return $this->errorResponse('Team could not updated!', 500);
         }
@@ -84,7 +78,7 @@ class TeamController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function destroy(DestroyTeamRequest $request, Team $team)
+    public function destroy(DestroyTeamRequest $request, Team $team): JsonResponse
     {
         $this->authorize('delete', $team);
         try {

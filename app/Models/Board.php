@@ -25,7 +25,7 @@ class Board extends Model
 
     public function teams()
     {
-        return $this->belongsToMany(Team::class, 'board_team');
+        return $this->belongsToMany(Team::class, 'board_teams');
     }
 
     public function requests()

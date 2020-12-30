@@ -2,18 +2,19 @@
 
 namespace App\Http\Resources\Team;
 
-use App\Http\Resources\Auth\MeResource;
+use App\Http\Resources\Board\BoardResource;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Request;
 
 class TeamResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             'id' => $this->id,
@@ -22,7 +23,8 @@ class TeamResource extends JsonResource
             'website' => $this->website,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'users' => MeResource::collection($this->users),
+            'boards' => BoardResource::collection($this->whenLoaded('boards')),
+            'users' => TeamUserResource::collection($this->whenLoaded('users')),
         ];
     }
 }

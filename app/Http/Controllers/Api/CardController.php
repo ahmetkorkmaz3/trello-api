@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Card\DestroyCardRequest;
-use App\Http\Requests\Card\ShowCardRequest;
 use App\Http\Requests\Card\StoreCardRequest;
 use App\Http\Requests\Card\UpdateCardRequest;
-use App\Http\Requests\Column\IndexColumnRequest;
 use App\Http\Resources\Card\CardResource;
 use App\Models\Board;
 use App\Models\Card;
@@ -23,7 +21,7 @@ class CardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function index(Board $board, Column $column)
+    public function index(Board $board, Column $column): JsonResponse
     {
         $this->authorize('view', $board);
         return $this->successResponse(CardResource::collection($column->cards), 'Card list', 200);
@@ -36,7 +34,7 @@ class CardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(StoreCardRequest $request, Board $board, Column $column)
+    public function store(StoreCardRequest $request, Board $board, Column $column): JsonResponse
     {
         $this->authorize('create', $board);
         try {
@@ -52,16 +50,15 @@ class CardController extends Controller
     }
 
     /**
-     * @param ShowCardRequest $request
      * @param Board $board
      * @param Column $column
      * @param Card $card
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function show(ShowCardRequest $request, Board $board, Column $column, Card $card)
+    public function show(Board $board, Column $column, Card $card): JsonResponse
     {
-        $this->authorize('show', $board);
+        $this->authorize('view', $board);
 
         return $this->successResponse(CardResource::make($card), 'Card details', 200);
     }
@@ -74,7 +71,7 @@ class CardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(UpdateCardRequest $request, Board $board, Column $column, Card $card)
+    public function update(UpdateCardRequest $request, Board $board, Column $column, Card $card): JsonResponse
     {
         $this->authorize('update', $board);
 
@@ -94,7 +91,7 @@ class CardController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function destroy(DestroyCardRequest $request, Board $board, Column $column, Card $card)
+    public function destroy(DestroyCardRequest $request, Board $board, Column $column, Card $card): JsonResponse
     {
         $this->authorize('delete', $board);
 

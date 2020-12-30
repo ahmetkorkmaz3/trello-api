@@ -3,7 +3,6 @@
 namespace App\Http\Resources\Board;
 
 use App\Http\Resources\Column\ColumnResource;
-use App\Http\Resources\UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class BoardResource extends JsonResource
@@ -20,8 +19,7 @@ class BoardResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'photo_id' => $this->photo_id,
-            'columns' => ColumnResource::collection($this->columns),
-            'users' => UserResource::collection($this->users),
+            'columns' => ColumnResource::collection($this->whenLoaded('columns')),
         ];
     }
 }

@@ -7,7 +7,6 @@ use App\Http\Requests\Auth\ChangePasswordRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Resources\Auth\MeResource;
-use App\Http\Resources\Auth\RegisterResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -20,7 +19,7 @@ class AuthController extends Controller
      * @param RegisterRequest $request
      * @return JsonResponse
      */
-    public function register(RegisterRequest $request)
+    public function register(RegisterRequest $request): JsonResponse
     {
         $user = User::create([
             'first_name' => $request->first_name,
@@ -33,7 +32,7 @@ class AuthController extends Controller
         return $this->successResponse(MeResource::make($user), 'User created successfully', 200);
     }
 
-    public function login(LoginRequest $request)
+    public function login(LoginRequest $request): JsonResponse
     {
         if (!$token = Auth::guard('api')->attempt($request->validated())) {
             return $this->errorResponse('Wrong email or password', 401);
@@ -46,8 +45,9 @@ class AuthController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function me(Request $request)
+    public function me(Request $request): JsonResponse
     {
+        auth()->user()->load('teams', 'boards');
         return $this->successResponse(MeResource::make(auth()->user()), 'Auth user', 200);
     }
 
@@ -55,7 +55,7 @@ class AuthController extends Controller
      * @param ChangePasswordRequest $request
      * @return JsonResponse
      */
-    public function changePassword(ChangePasswordRequest $request)
+    public function changePassword(ChangePasswordRequest $request): JsonResponse
     {
         if (!Hash::check($request->old_password, auth()->user()->password)) {
             return $this->errorResponse('Old password not same password', 400);
