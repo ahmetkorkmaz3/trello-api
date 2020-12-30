@@ -47,6 +47,7 @@ class AuthController extends Controller
      */
     public function me(Request $request): JsonResponse
     {
+        auth()->user()->load('teams', 'boards');
         return $this->successResponse(MeResource::make(auth()->user()), 'Auth user', 200);
     }
 

@@ -47,6 +47,7 @@ class BoardController extends Controller
     public function show(Board $board): JsonResponse
     {
         $this->authorize('view', $board);
+        $board->load('columns');
         return $this->successResponse(BoardResource::make($board), 'Board Details', 200);
     }
 
@@ -61,9 +62,6 @@ class BoardController extends Controller
         $this->authorize('update', $board);
         try {
             $board->update($request->validated());
-            if ($request->has('user_ids')) {
-                $board->users()->sync($request->user_ids);
-            }
         } catch (\Exception $exception) {
             return $this->errorResponse('Board could not updated!', 500);
         }

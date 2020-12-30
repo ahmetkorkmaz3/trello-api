@@ -22,7 +22,7 @@ class TeamResource extends JsonResource
             'website' => $this->website,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'users' => TeamUserResource::collection($this->users),
+            'users' => TeamUserResource::collection($this->whenLoaded('users')),
         ];
     }
 }

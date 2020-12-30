@@ -25,8 +25,8 @@ class MeResource extends JsonResource
             'email' => $this->email,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'boards' => $this->boards,
-            'teams' => $this->teams,
+            'boards' => BoardResource::collection($this->whenLoaded('boards')),
+            'teams' => TeamResource::collection($this->whenLoaded('teams')),
         ];
     }
 }

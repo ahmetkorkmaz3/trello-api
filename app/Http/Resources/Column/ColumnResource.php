@@ -21,7 +21,7 @@ class ColumnResource extends JsonResource
             'board_id' => $this->board_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'cards' => CardResource::collection($this->cards),
+            'cards' => CardResource::collection($this->whenLoaded('cards')),
         ];
     }
 }

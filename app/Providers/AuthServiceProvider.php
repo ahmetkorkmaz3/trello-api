@@ -24,7 +24,7 @@ class AuthServiceProvider extends ServiceProvider
         Column::class => BoardPolicy::class,
         Card::class => BoardPolicy::class,
         Team::class => TeamPolicy::class,
-        TeamBoardController::class => TeamBoardPolicy::class,
+//        TeamBoardController::class => TeamBoardPolicy::class,
     ];
 
     /**

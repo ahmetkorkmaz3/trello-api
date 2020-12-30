@@ -45,6 +45,7 @@ class TeamController extends Controller
     public function show(Team $team): JsonResponse
     {
         $this->authorize('view', $team);
+        $team->load('boards');
         return $this->successResponse(TeamResource::make($team), 'Team detail', 200);
     }
 

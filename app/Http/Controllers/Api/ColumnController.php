@@ -22,6 +22,7 @@ class ColumnController extends Controller
     public function index(Board $board): JsonResponse
     {
         $this->authorize('view', $board);
+        $board->columns->load('cards');
         return $this->successResponse(ColumnResource::collection($board->columns), 'Board columns', 200);
     }
 
@@ -53,6 +54,7 @@ class ColumnController extends Controller
     public function show(Board $board, Column $column): JsonResponse
     {
         $this->authorize('view', $board);
+        $column->load('cards');
         return $this->successResponse(ColumnResource::make($column), 'Column Detail', 200);
     }
 

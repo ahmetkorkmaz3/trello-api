@@ -21,11 +21,16 @@
   <component name="ChangeListManager">
     <list default="true" id="66491a87-7a9b-4251-9ea6-035f5d4a037b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/TeamBoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/TeamBoardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Board.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Board.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/TeamBoardPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/TeamBoardPolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/BoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BoardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ColumnController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ColumnController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/TeamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/TeamController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Board/UpdateBoardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Board/UpdateBoardRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Auth/MeResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Auth/MeResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Board/BoardResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Board/BoardResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Column/ColumnResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Column/ColumnResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Team/TeamResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Team/TeamResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_155313_create_board_team_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_19_155313_create_board_team_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +238,8 @@
       <workItem from="1602528684140" duration="154000" />
       <workItem from="1609245352116" duration="186000" />
       <workItem from="1609245542728" duration="8424000" />
-      <workItem from="1609272857009" duration="2869000" />
+      <workItem from="1609272857009" duration="2925000" />
+      <workItem from="1609333056757" duration="1232000" />
     </task>
     <servers />
   </component>
