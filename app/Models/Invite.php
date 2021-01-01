@@ -32,10 +32,12 @@ class Invite extends Model
         self::TYPE_TEAM,
     ];
 
+    protected $guarded = [];
+
     protected static function boot()
     {
         parent::boot();
-        self::creating(function($invite) {
+        self::creating(function ($invite) {
             $invite->token = Str::random(60);
         });
     }
