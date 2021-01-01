@@ -19,6 +19,7 @@ class CreateTeamUserInvitesTable extends Migration
             $table->string('email');
             $table->foreignId('team_id')->constrained('teams');
             $table->string('status')->default(TeamUserInvite::STATUS_PENDING);
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -31,7 +31,7 @@ class TeamUserController extends Controller
      */
     public function store(StoreTeamUserRequest $request, Team $team): JsonResponse
     {
-        $user = User::where('email', $request->email)->exists();
+        $user = User::where('email', $request->email)->first();
 
         DB::beginTransaction();
         try {
@@ -44,7 +44,8 @@ class TeamUserController extends Controller
             }
 
             $teamUserInvite = $team->teamUserInvites()->create([
-                'email' => $request->email
+                'email' => $request->email,
+                'user_id' => $user ? $user->id : null
             ]);
         } catch (\Exception $exception) {
             DB::rollBack();
