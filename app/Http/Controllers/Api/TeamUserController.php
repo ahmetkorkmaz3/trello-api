@@ -9,6 +9,7 @@ use App\Models\Invite;
 use App\Models\Team;
 use App\Models\TeamUserInvite;
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,9 +19,11 @@ class TeamUserController extends Controller
     /**
      * @param Team $team
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function index(Team $team): JsonResponse
     {
+        $this->authorize('view', $team);
         return $this->successResponse(TeamUserResource::collection($team->users), 'Team users', 200);
     }
 
@@ -28,9 +31,11 @@ class TeamUserController extends Controller
      * @param StoreTeamUserRequest $request
      * @param Team $team
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function store(StoreTeamUserRequest $request, Team $team): JsonResponse
     {
+        $this->authorize('create', $team);
         $user = User::where('email', $request->email)->first();
 
         DB::beginTransaction();
@@ -60,9 +65,11 @@ class TeamUserController extends Controller
      * @param Team $team
      * @param User $user
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function destroy(Team $team, User $user): JsonResponse
     {
+        $this->authorize('delete', $team);
         try {
             $team->users()->detach($user->id);
         } catch (\Exception $exception) {
