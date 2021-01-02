@@ -45,7 +45,6 @@ class TeamBoardController extends Controller
      */
     public function show(Team $team, Board $board): JsonResponse
     {
-        // TODO: not working check this method
         $this->authorize('view', $team);
         $board->load('columns');
         return $this->successResponse(BoardResource::make($board), 'Board detail', 200);

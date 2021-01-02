@@ -2,15 +2,14 @@
 
 namespace App\Providers;
 
-use App\Http\Controllers\Api\TeamBoardController;
 use App\Models\Board;
 use App\Models\Card;
 use App\Models\Column;
 use App\Models\Team;
-use App\Models\TeamBoard;
+use App\Models\TeamUserInvite;
 use App\Policies\BoardPolicy;
-use App\Policies\TeamBoardPolicy;
 use App\Policies\TeamPolicy;
+use App\Policies\TeamUserInvitePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -25,6 +24,7 @@ class AuthServiceProvider extends ServiceProvider
         Column::class => BoardPolicy::class,
         Card::class => BoardPolicy::class,
         Team::class => TeamPolicy::class,
+        TeamUserInvite::class => TeamUserInvitePolicy::class,
     ];
 
     /**

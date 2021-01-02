@@ -34,4 +34,12 @@ Route::middleware('auth:api')->group(function () {
 
     // Team Board route list
     Route::apiResource('team.board', 'TeamBoardController');
+
+    Route::prefix('team/{team}/user')->group(function () {
+        Route::get('', 'TeamUserController@index');
+        Route::post('', 'TeamUserController@store');
+        Route::delete('/{user}', 'TeamUserController@destroy');
+    });
+
+    Route::apiResource('team-user-invite', 'TeamUserInviteController', ['except' => ['store', 'show']]);
 });
