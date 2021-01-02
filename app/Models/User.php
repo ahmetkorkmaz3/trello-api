@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,17 +26,17 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    public function boards()
+    public function boards(): BelongsToMany
     {
         return $this->belongsToMany(Board::class, 'board_users');
     }
 
-    public function teams()
+    public function teams(): BelongsToMany
     {
         return $this->belongsToMany(Team::class, 'team_users');
     }
 
-    public function getFullNameAttribute()
+    public function getFullNameAttribute(): string
     {
         return $this->first_name . ' ' . $this->last_name;
     }
@@ -44,8 +46,14 @@ class User extends Authenticatable implements JWTSubject
         return $this->getKey();
     }
 
-    public function getJWTCustomClaims()
+    public function getJWTCustomClaims(): array
     {
         return [];
+    }
+
+    public function invites(): HasMany
+    {
+        return $this->hasMany(TeamUserInvite::class)
+            ->where('status', TeamUserInvite::STATUS_PENDING);
     }
 }

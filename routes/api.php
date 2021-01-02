@@ -40,4 +40,6 @@ Route::middleware('auth:api')->group(function () {
         Route::post('', 'TeamUserController@store');
         Route::delete('/{user}', 'TeamUserController@destroy');
     });
+
+    Route::apiResource('team-user-invite', 'TeamUserInviteController', ['except' => ['store', 'show']]);
 });

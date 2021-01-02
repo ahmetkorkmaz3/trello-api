@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TeamUserInvite extends Model
 {
+    use SoftDeletes;
+
     const STATUS_PENDING = 'pending';
     const STATUS_COMPLETED = 'completed';
     const STATUS_REJECTED = 'rejected';
