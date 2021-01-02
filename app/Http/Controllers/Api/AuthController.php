@@ -7,10 +7,14 @@ use App\Http\Requests\Auth\ChangePasswordRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Resources\Auth\MeResource;
+use App\Models\Invite;
+use App\Models\Team;
+use App\Models\TeamUserInvite;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -21,6 +25,35 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request): JsonResponse
     {
+        if ($request->has('token')) {
+            $invite = Invite::where('token', $request->token)->first();
+            DB::beginTransaction();
+            try {
+                $user = User::create([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'username' => $request->username,
+                    'email' => $invite->email,
+                    'password' => bcrypt($request->password)
+                ]);
+
+                if ($invite->type == Invite::TYPE_TEAM) {
+                    $team = Team::find($invite->type_id)->first();
+                    $team->users()->attach($user->id);
+
+                    TeamUserInvite::where([
+                        'email' => $invite->email,
+                        'team_id' => $team->id
+                    ])->update(['status' => TeamUserInvite::STATUS_COMPLETED, 'user_id' => $user->id]);
+                }
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                $this->errorResponse('Somethings wrong', 500);
+            }
+            DB::commit();
+            return $this->successResponse(MeResource::make($user), 'Success register');
+
+        }
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
