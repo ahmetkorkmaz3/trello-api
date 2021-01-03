@@ -43,6 +43,7 @@ class CardController extends Controller
                 'description' => $request->description,
             ]);
         } catch (\Exception $exception) {
+            report($exception);
             return $this->errorResponse('Card could not be created', 500);
         }
         return $this->successResponse(CardResource::make($card), 'Card created successfully', 201);
@@ -78,6 +79,7 @@ class CardController extends Controller
         try {
             $card->update($request->validated());
         } catch (\Exception $exception) {
+            report($exception);
             return $this->errorResponse('Card could not be updated!', 500);
         }
         return $this->successResponse(CardResource::make($card), 'Card updated successfully', 200);
@@ -98,6 +100,7 @@ class CardController extends Controller
         try {
             $card->delete();
         } catch (\Exception $exception) {
+            report($exception);
             return $this->errorResponse('Card could not be deleted!', 500);
         }
         return $this->successResponse(null, 'Card deleted successfully', 200);

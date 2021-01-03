@@ -40,6 +40,7 @@ class ColumnController extends Controller
                 'name' => $request->name,
             ]);
         } catch (\Exception $exception) {
+            report($exception);
             return $this->errorResponse('Column could not be created!' , 500);
         }
         return $this->successResponse(ColumnResource::make($column), 'Column created successfully', 201);
@@ -71,6 +72,7 @@ class ColumnController extends Controller
         try {
             $column->update($request->validated());
         } catch (\Exception $exception) {
+            report($exception);
             return $this->errorResponse('Column could not updated!', 500);
         }
         return $this->successResponse(ColumnResource::make($column), 'Column updated successfully', 200);
@@ -89,6 +91,7 @@ class ColumnController extends Controller
         try {
             $column->delete();
         } catch (\Exception $exception) {
+            report($exception);
             return $this->errorResponse('Column could not be deleted!', 500);
         }
         return $this->successResponse(null, 'Column deleted successfully', 200);

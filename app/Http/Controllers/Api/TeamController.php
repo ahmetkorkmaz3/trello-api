@@ -32,6 +32,7 @@ class TeamController extends Controller
             $team = Team::create($request->validated());
             $team->users()->attach(auth()->user());
         } catch (\Exception $exception) {
+            report($exception);
             return $this->errorResponse('Team could not be created', 500);
         }
         return $this->successResponse(TeamResource::make($team), 'Team successfully created', 201);
@@ -61,6 +62,7 @@ class TeamController extends Controller
         try {
             $team->update($request->validated());
         } catch (\Exception $exception) {
+            report($exception);
             return $this->errorResponse('Team could not updated!', 500);
         }
         return $this->successResponse(TeamResource::make($team), 'Team updated successfully', 200);
@@ -78,6 +80,7 @@ class TeamController extends Controller
         try {
             $team->delete();
         } catch (\Exception $exception) {
+            report($exception);
             return $this->errorResponse('Team could not deleted!', 500);
         }
         return $this->successResponse(null, 'Team deleted successfully', 200);

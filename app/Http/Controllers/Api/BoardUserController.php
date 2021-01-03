@@ -56,6 +56,7 @@ class BoardUserController extends Controller
 
         } catch (\Exception $exception) {
             DB::rollBack();
+            report($exception);
             abort(500, 'Server error');
         }
 
@@ -76,7 +77,8 @@ class BoardUserController extends Controller
         try {
             $board->users()->detach($user->id);
         } catch (\Exception $exception) {
-            $this->errorResponse('Server error', 500);
+            report($exception);
+            return $this->errorResponse('Server error', 500);
         }
 
         return $this->successResponse(null, 'Success', 204);

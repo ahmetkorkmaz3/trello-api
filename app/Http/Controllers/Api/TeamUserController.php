@@ -54,6 +54,7 @@ class TeamUserController extends Controller
             ]);
         } catch (\Exception $exception) {
             DB::rollBack();
+            report($exception);
             abort(500, 'Server error');
         }
         DB::commit();
@@ -73,6 +74,7 @@ class TeamUserController extends Controller
         try {
             $team->users()->detach($user->id);
         } catch (\Exception $exception) {
+            report($exception);
             abort(500, 'Can not remove user from team');
         }
         return $this->successResponse(null, 'Success', 204);
