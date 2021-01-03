@@ -16,8 +16,8 @@ class TeamUserInviteController extends Controller
      */
     public function index(): JsonResponse
     {
-        auth()->user()->invites->load('team');
-        return $this->successResponse(TeamUserInviteResource::collection(auth()->user()->invites), 'All invites');
+        auth()->user()->teamInvites->load('team');
+        return $this->successResponse(TeamUserInviteResource::collection(auth()->user()->teamInvites), 'All team invites');
     }
 
     /**
@@ -59,6 +59,6 @@ class TeamUserInviteController extends Controller
         }
         DB::commit();
 
-        return $this->successResponse(null, 'Success', 200);
+        return $this->successResponse(null, 'Success', 204);
     }
 }

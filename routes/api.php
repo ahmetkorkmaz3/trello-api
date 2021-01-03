@@ -41,5 +41,12 @@ Route::middleware('auth:api')->group(function () {
         Route::delete('/{user}', 'TeamUserController@destroy');
     });
 
+    Route::prefix('board/{board}/user')->group(function () {
+        Route::get('', 'BoardUserController@index');
+        Route::post('', 'BoardUserController@store');
+        Route::delete('/{user}', 'BoardUserController@destroy');
+    });
+
     Route::apiResource('team-user-invite', 'TeamUserInviteController', ['except' => ['store', 'show']]);
+    Route::apiResource('board-user-invite', 'BoardUserInviteController', ['except' => ['store', 'show']]);
 });

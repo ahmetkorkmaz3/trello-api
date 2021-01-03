@@ -47,7 +47,7 @@ class BoardController extends Controller
     public function show(Board $board): JsonResponse
     {
         $this->authorize('view', $board);
-        $board->load('columns');
+        $board->load('columns', 'users');
         return $this->successResponse(BoardResource::make($board), 'Board Details', 200);
     }
 
