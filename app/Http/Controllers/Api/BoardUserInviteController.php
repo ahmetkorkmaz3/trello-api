@@ -34,6 +34,7 @@ class BoardUserInviteController extends Controller
             $boardUserInvite->board->users()->syncWithoutDetaching(auth()->user()->id);
         } catch (\Exception $exception) {
             DB::rollBack();
+            report($exception);
             abort(500, 'Server error');
         }
         DB::commit();
@@ -55,6 +56,7 @@ class BoardUserInviteController extends Controller
             $boardUserInvite->delete();
         } catch (\Exception $exception) {
             DB::rollBack();
+            report($exception);
             abort(500, 'Server error');
         }
         DB::commit();

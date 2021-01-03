@@ -48,7 +48,8 @@ class AuthController extends Controller
                 }
             } catch (\Exception $exception) {
                 DB::rollBack();
-                $this->errorResponse('Somethings wrong', 500);
+                report($exception);
+                return $this->errorResponse('Somethings wrong', 500);
             }
             DB::commit();
             return $this->successResponse(MeResource::make($user), 'Success register');
@@ -97,6 +98,7 @@ class AuthController extends Controller
         try {
             auth()->user()->update(['password' => Hash::make($request->password)]);
         } catch (\Exception $exception) {
+            report($exception);
             return $this->errorResponse('Password could not change', 500);
         }
         return $this->successResponse(null, 'Password change', 200);

@@ -63,6 +63,7 @@ class TeamBoardController extends Controller
         try {
             $board->update($request->validated());
         } catch (\Exception $exception) {
+            report($exception);
             return $this->errorResponse('Board could not updated!', 500);
         }
         return $this->successResponse(BoardResource::make($board), 'Board updated successfully', 200);
@@ -80,6 +81,7 @@ class TeamBoardController extends Controller
         try {
             $board->delete();
         } catch (\Exception $exception) {
+            report($exception);
             return $this->errorResponse('Board could not deleted!', 500);
         }
         return $this->successResponse(null, 'Board deleted successfully', 200);

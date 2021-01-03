@@ -34,7 +34,8 @@ class TeamUserInviteController extends Controller
             $teamUserInvite->team->users()->syncWithoutDetaching(auth()->user()->id);
         } catch (\Exception $exception) {
             DB::rollBack();
-            $this->errorResponse('Somethings wrong', 500);
+            report($exception);
+            return $this->errorResponse('Somethings wrong', 500);
         }
         DB::commit();
 
@@ -55,6 +56,7 @@ class TeamUserInviteController extends Controller
             $teamUserInvite->delete();
         } catch (\Exception $e) {
             DB::rollBack();
+            report($e);
             return $this->errorResponse('Invite could not be cancel', 500);
         }
         DB::commit();
