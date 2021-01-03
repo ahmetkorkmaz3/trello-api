@@ -3,6 +3,7 @@
 namespace App\Http\Requests\BoardUser;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreBoardUserRequest extends FormRequest
 {
@@ -11,6 +12,16 @@ class StoreBoardUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
+    }
+
+    /**
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'email' =>['required', 'email'],
+        ];
     }
 }

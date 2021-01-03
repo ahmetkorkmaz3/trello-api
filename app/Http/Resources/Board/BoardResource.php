@@ -20,6 +20,7 @@ class BoardResource extends JsonResource
             'name' => $this->name,
             'photo_id' => $this->photo_id,
             'columns' => ColumnResource::collection($this->whenLoaded('columns')),
+            'users' => BoardUserResource::collection($this->whenLoaded('users')),
         ];
     }
 }

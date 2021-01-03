@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Board extends Model
@@ -13,18 +15,23 @@ class Board extends Model
         'name',
     ];
 
-    public function users()
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'board_users');
     }
 
-    public function columns()
+    public function columns(): HasMany
     {
         return $this->hasMany(Column::class);
     }
 
-    public function teams()
+    public function teams(): BelongsToMany
     {
         return $this->belongsToMany(Team::class, 'board_teams');
+    }
+
+    public function userInvites(): HasMany
+    {
+        return $this->hasMany(BoardUserInvite::class);
     }
 }

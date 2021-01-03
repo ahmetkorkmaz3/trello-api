@@ -51,9 +51,15 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function invites(): HasMany
+    public function teamInvites(): HasMany
     {
         return $this->hasMany(TeamUserInvite::class)
             ->where('status', TeamUserInvite::STATUS_PENDING);
+    }
+
+    public function boardInvites(): HasMany
+    {
+        return $this->hasMany(BoardUserInvite::class)
+            ->where('status', BoardUserInvite::STATUS_PENDING);
     }
 }
