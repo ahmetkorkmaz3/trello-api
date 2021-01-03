@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 use \Illuminate\Support\Str;
 
 /**
@@ -12,7 +13,7 @@ use \Illuminate\Support\Str;
  */
 class Invite extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Notifiable;
 
     const STATUS_PENDING = 'pending';
     const STATUS_COMPLETED = 'completed';
@@ -42,7 +43,7 @@ class Invite extends Model
         });
     }
 
-    public function getSharedUrlAttribute()
+    public function getSharedUrlAttribute(): string
     {
         return env('APP_URL') . '/register/' . $this->token;
     }

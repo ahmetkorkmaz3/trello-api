@@ -9,6 +9,7 @@ use App\Models\Invite;
 use App\Models\Team;
 use App\Models\TeamUserInvite;
 use App\Models\User;
+use App\Notifications\InviteNotification;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -41,11 +42,13 @@ class TeamUserController extends Controller
         DB::beginTransaction();
         try {
             if (!$user) {
-                Invite::create([
+                $invite = Invite::create([
                     'email' => $request->email,
                     'type' => Invite::TYPE_TEAM,
                     'type_id' => $team->id,
                 ]);
+
+                $invite->notify(new InviteNotification());
             }
 
             $teamUserInvite = $team->teamUserInvites()->create([

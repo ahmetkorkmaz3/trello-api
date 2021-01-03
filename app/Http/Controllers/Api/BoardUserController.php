@@ -10,6 +10,7 @@ use App\Models\Board;
 use App\Models\Invite;
 use App\Models\Team;
 use App\Models\User;
+use App\Notifications\InviteNotification;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -42,11 +43,14 @@ class BoardUserController extends Controller
         DB::beginTransaction();
         try {
             if (!$user) {
-                Invite::create([
+                $invite = Invite::create([
                     'email' => $request->email,
                     'type' => Invite::TYPE_BOARD,
                     'type_id' => $board->id,
                 ]);
+
+                $invite->notify(new InviteNotification());
+
             }
 
             $boardUserInvite = $board->userInvites()->create([
