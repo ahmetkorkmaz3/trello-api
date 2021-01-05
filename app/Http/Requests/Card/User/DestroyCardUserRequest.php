@@ -21,6 +21,7 @@ class DestroyCardUserRequest extends FormRequest
      */
     public function rules(): array
     {
+        // TODO: Check exists user in assigned card
         return [
             'users' => ['required', 'array'],
             'users.*' => ['exists:card_users,user_id']

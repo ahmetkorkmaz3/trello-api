@@ -20,6 +20,7 @@ class StoreCardUserRequest extends FormRequest
      */
     public function rules(): array
     {
+        // TODO: Check user in board
         return [
             'users' => ['required', 'array'],
             'users.*' => [
