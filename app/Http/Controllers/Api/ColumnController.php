@@ -11,6 +11,7 @@ use App\Models\Board;
 use App\Models\Column;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 
 class ColumnController extends Controller
 {
@@ -35,19 +36,23 @@ class ColumnController extends Controller
     public function store(StoreColumnRequest $request, Board $board): JsonResponse
     {
         $this->authorize('create', $board);
+        DB::beginTransaction();
         try {
             $column = $board->columns()->create([
                 'name' => $request->name,
             ]);
+
+            activity()
+                ->causedBy(auth()->user())
+                ->performedOn($board)
+                ->log('create new column');
         } catch (\Exception $exception) {
             report($exception);
+            DB::rollBack();
             return $this->errorResponse('Column could not be created!' , 500);
         }
 
-        activity()
-            ->causedBy(auth()->user())
-            ->performedOn($board)
-            ->log('create new column');
+        DB::commit();
 
         return $this->successResponse(ColumnResource::make($column), 'Column created successfully', 201);
     }
@@ -75,17 +80,21 @@ class ColumnController extends Controller
     public function update(UpdateColumnRequest $request, Board $board, Column $column): JsonResponse
     {
         $this->authorize('update', $board);
+        DB::beginTransaction();
         try {
             $column->update($request->validated());
+
+            activity()
+                ->causedBy(auth()->user())
+                ->performedOn($board)
+                ->log('update column');
         } catch (\Exception $exception) {
             report($exception);
+            DB::rollBack();
             return $this->errorResponse('Column could not updated!', 500);
         }
 
-        activity()
-            ->causedBy(auth()->user())
-            ->performedOn($board)
-            ->log('update column');
+        DB::commit();
 
         return $this->successResponse(ColumnResource::make($column), 'Column updated successfully', 200);
     }
@@ -100,17 +109,21 @@ class ColumnController extends Controller
     public function destroy(DestroyColumnRequest $request, Board $board, Column $column): JsonResponse
     {
         $this->authorize('delete', $board);
+        DB::beginTransaction();
         try {
             $column->delete();
+
+            activity()
+                ->causedBy(auth()->user())
+                ->performedOn($board)
+                ->log('delete column');
         } catch (\Exception $exception) {
             report($exception);
+            DB::rollBack();
             return $this->errorResponse('Column could not be deleted!', 500);
         }
 
-        activity()
-            ->causedBy(auth()->user())
-            ->performedOn($board)
-            ->log('delete column');
+        DB::commit();
 
         return $this->successResponse(null, 'Column deleted successfully', 200);
     }

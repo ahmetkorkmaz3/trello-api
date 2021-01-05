@@ -10,6 +10,7 @@ use App\Http\Resources\Board\BoardResource;
 use App\Models\Board;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 
 class BoardController extends Controller
 {
@@ -60,17 +61,21 @@ class BoardController extends Controller
     public function update(UpdateBoardRequest $request, Board $board): JsonResponse
     {
         $this->authorize('update', $board);
+        DB::beginTransaction();
         try {
             $board->update($request->validated());
+
+            activity()
+                ->causedBy(auth()->user())
+                ->performedOn($board)
+                ->log('update board details');
         } catch (\Exception $exception) {
             report($exception);
+            DB::rollBack();
             return $this->errorResponse('Board could not updated!', 500);
         }
 
-        activity()
-            ->causedBy(auth()->user())
-            ->performedOn($board)
-            ->log('update board details');
+        DB::commit();
 
         return $this->successResponse(BoardResource::make($board), 'Board updated successfully', 200);
     }
