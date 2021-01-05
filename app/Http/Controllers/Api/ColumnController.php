@@ -43,6 +43,13 @@ class ColumnController extends Controller
             report($exception);
             return $this->errorResponse('Column could not be created!' , 500);
         }
+
+        activity()
+            ->causedBy(auth()->user())
+            ->performedOn($column)
+            ->withProperties(['board_id' => $board->id])
+            ->log('create new column');
+
         return $this->successResponse(ColumnResource::make($column), 'Column created successfully', 201);
     }
 

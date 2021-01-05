@@ -23,6 +23,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/16031791-9f8a-4505-8c87-832b53e677d8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/16031791-9f8a-4505-8c87-832b53e677d8.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ColumnController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ColumnController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Board.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Board.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
@@ -212,6 +214,7 @@
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
       <path value="$PROJECT_DIR$/vendor/league/glide" />
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-activitylog" />
     </include_path>
   </component>
   <component name="ProjectId" id="1hjMGtVbEJ3kFgBaej2lLJCh0g9" />
@@ -277,6 +280,8 @@
       <workItem from="1609530512057" duration="6664000" />
       <workItem from="1609616108840" duration="3495000" />
       <workItem from="1609630004756" duration="154000" />
+      <workItem from="1609801478442" duration="515000" />
+      <workItem from="1609850556923" duration="1935000" />
     </task>
     <servers />
   </component>
