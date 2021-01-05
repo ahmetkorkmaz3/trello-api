@@ -43,6 +43,10 @@ Route::middleware('auth:api')->group(function () {
         Route::delete('/{user}', 'TeamUserController@destroy');
     });
 
+    Route::get('board/{board}/activity', 'BoardActivityController');
+
+    Route::get('activity', 'ActivityController');
+
     Route::prefix('board/{board}/user')->group(function () {
         Route::get('', 'BoardUserController@index');
         Route::post('', 'BoardUserController@store');

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\Models\Activity;
 
 class Board extends Model
 {
@@ -33,5 +34,10 @@ class Board extends Model
     public function userInvites(): HasMany
     {
         return $this->hasMany(BoardUserInvite::class);
+    }
+
+    public function activities(): HasMany
+    {
+        return $this->hasMany(Activity::class, 'subject_id');
     }
 }

@@ -12,6 +12,7 @@ use App\Models\Card;
 use App\Models\Column;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 
 class CardController extends Controller
 {
@@ -37,15 +38,26 @@ class CardController extends Controller
     public function store(StoreCardRequest $request, Board $board, Column $column): JsonResponse
     {
         $this->authorize('create', $board);
+
+        DB::beginTransaction();
+
         try {
             $card = $column->cards()->create([
                 'name' => $request->name,
                 'description' => $request->description,
             ]);
+
+            activity()
+                ->causedBy(auth()->user())
+                ->performedOn($board)
+                ->log('create new card');
         } catch (\Exception $exception) {
             report($exception);
+            DB::rollBack();
             return $this->errorResponse('Card could not be created', 500);
         }
+        DB::commit();
+
         return $this->successResponse(CardResource::make($card), 'Card created successfully', 201);
 
     }
@@ -76,12 +88,22 @@ class CardController extends Controller
     {
         $this->authorize('update', $board);
 
+        DB::beginTransaction();
+
         try {
             $card->update($request->validated());
+            activity()
+                ->causedBy(auth()->user())
+                ->performedOn($board)
+                ->log('update card');
         } catch (\Exception $exception) {
             report($exception);
+            DB::rollBack();
             return $this->errorResponse('Card could not be updated!', 500);
         }
+
+        DB::commit();
+
         return $this->successResponse(CardResource::make($card), 'Card updated successfully', 200);
     }
 
@@ -97,12 +119,23 @@ class CardController extends Controller
     {
         $this->authorize('delete', $board);
 
+        DB::beginTransaction();
+
         try {
             $card->delete();
+
+            activity()
+                ->causedBy(auth()->user())
+                ->performedOn($board)
+                ->log('delete card');
         } catch (\Exception $exception) {
             report($exception);
+            DB::rollBack();
             return $this->errorResponse('Card could not be deleted!', 500);
         }
+
+        DB::commit();
+
         return $this->successResponse(null, 'Card deleted successfully', 200);
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Models\Activity;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -62,5 +63,10 @@ class User extends Authenticatable implements JWTSubject, HasMedia
     {
         return $this->hasMany(BoardUserInvite::class)
             ->where('status', BoardUserInvite::STATUS_PENDING);
+    }
+
+    public function activities(): HasMany
+    {
+        return $this->hasMany(Activity::class, 'causer_id');
     }
 }
