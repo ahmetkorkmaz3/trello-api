@@ -66,6 +66,12 @@ class BoardController extends Controller
             report($exception);
             return $this->errorResponse('Board could not updated!', 500);
         }
+
+        activity()
+            ->causedBy(auth()->user())
+            ->performedOn($board)
+            ->log('update board details');
+
         return $this->successResponse(BoardResource::make($board), 'Board updated successfully', 200);
     }
 

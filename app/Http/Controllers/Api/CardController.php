@@ -46,6 +46,12 @@ class CardController extends Controller
             report($exception);
             return $this->errorResponse('Card could not be created', 500);
         }
+
+        activity()
+            ->causedBy(auth()->user())
+            ->performedOn($board)
+            ->log('create new card');
+
         return $this->successResponse(CardResource::make($card), 'Card created successfully', 201);
 
     }
@@ -82,6 +88,12 @@ class CardController extends Controller
             report($exception);
             return $this->errorResponse('Card could not be updated!', 500);
         }
+
+        activity()
+            ->causedBy(auth()->user())
+            ->performedOn($board)
+            ->log('update card');
+
         return $this->successResponse(CardResource::make($card), 'Card updated successfully', 200);
     }
 
@@ -103,6 +115,12 @@ class CardController extends Controller
             report($exception);
             return $this->errorResponse('Card could not be deleted!', 500);
         }
+
+        activity()
+            ->causedBy(auth()->user())
+            ->performedOn($board)
+            ->log('delete card');
+
         return $this->successResponse(null, 'Card deleted successfully', 200);
     }
 }

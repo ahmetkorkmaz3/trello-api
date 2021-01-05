@@ -46,8 +46,7 @@ class ColumnController extends Controller
 
         activity()
             ->causedBy(auth()->user())
-            ->performedOn($column)
-            ->withProperties(['board_id' => $board->id])
+            ->performedOn($board)
             ->log('create new column');
 
         return $this->successResponse(ColumnResource::make($column), 'Column created successfully', 201);
@@ -82,6 +81,12 @@ class ColumnController extends Controller
             report($exception);
             return $this->errorResponse('Column could not updated!', 500);
         }
+
+        activity()
+            ->causedBy(auth()->user())
+            ->performedOn($board)
+            ->log('update column');
+
         return $this->successResponse(ColumnResource::make($column), 'Column updated successfully', 200);
     }
 
@@ -101,6 +106,12 @@ class ColumnController extends Controller
             report($exception);
             return $this->errorResponse('Column could not be deleted!', 500);
         }
+
+        activity()
+            ->causedBy(auth()->user())
+            ->performedOn($board)
+            ->log('delete column');
+
         return $this->successResponse(null, 'Column deleted successfully', 200);
     }
 }
