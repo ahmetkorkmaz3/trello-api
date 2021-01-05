@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -68,5 +69,10 @@ class User extends Authenticatable implements JWTSubject, HasMedia
     public function activities(): HasMany
     {
         return $this->hasMany(Activity::class, 'causer_id');
+    }
+
+    public function assignedCards(): BelongsToMany
+    {
+        return $this->belongsToMany(Card::class, 'card_users');
     }
 }
