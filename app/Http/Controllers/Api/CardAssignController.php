@@ -6,10 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Card\User\DestroyCardUserRequest;
 use App\Http\Requests\Card\User\StoreCardUserRequest;
 use App\Models\Card;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 
-class CardUserController extends Controller
+class CardAssignController extends Controller
 {
     /**
      * @param Card $card
