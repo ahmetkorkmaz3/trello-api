@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Card\CheckList\StoreCheckListRequest;
 use App\Http\Requests\Card\CheckList\UpdateCheckListRequest;
+use App\Http\Resources\Card\CardCheckListResource;
 use App\Models\Card;
 use App\Models\CardCheckList;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -20,7 +21,7 @@ class CardCheckListController extends Controller
     public function index(Card $card): JsonResponse
     {
         $this->authorize('view', $card->board());
-        return $this->successResponse($card->checkLists, 'Success');
+        return $this->successResponse(CardCheckListResource::collection($card->checkLists), 'Success');
     }
 
     /**
@@ -41,7 +42,7 @@ class CardCheckListController extends Controller
             return $this->errorResponse('CheckList could not created', 500);
         }
 
-        return $this->successResponse($checklist, 'Success', 201);
+        return $this->successResponse(CardCheckListResource::make($checklist), 'Success', 201);
     }
 
     /**
@@ -60,7 +61,7 @@ class CardCheckListController extends Controller
             return $this->errorResponse('Checklist could not updated!', 500);
         }
 
-        return $this->successResponse($cardCheckList, 'Success');
+        return $this->successResponse(CardCheckListResource::make($cardCheckList), 'Success');
     }
 
     /**
