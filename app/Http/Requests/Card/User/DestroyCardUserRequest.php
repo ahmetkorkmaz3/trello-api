@@ -21,10 +21,11 @@ class DestroyCardUserRequest extends FormRequest
      */
     public function rules(): array
     {
-        // TODO: Check exists user in assigned card
         return [
             'users' => ['required', 'array'],
-            'users.*' => ['exists:card_users,user_id']
+            'users.*' => [
+                'exists:card_assignees,user_id,card_id,' . $this->route('card')->id,
+            ],
         ];
     }
 }

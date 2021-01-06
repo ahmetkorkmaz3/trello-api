@@ -23,6 +23,6 @@ class Card extends Model
 
     public function assignedUsers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'card_users');
+        return $this->belongsToMany(User::class, 'card_assignees');
     }
 }

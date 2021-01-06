@@ -73,6 +73,6 @@ class User extends Authenticatable implements JWTSubject, HasMedia
 
     public function assignedCards(): BelongsToMany
     {
-        return $this->belongsToMany(Card::class, 'card_users');
+        return $this->belongsToMany(Card::class, 'card_assignees');
     }
 }

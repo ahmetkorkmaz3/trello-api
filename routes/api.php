@@ -31,7 +31,7 @@ Route::middleware('auth:api')->group(function () {
     // Card route list
     Route::apiResource('board.column.card', 'CardController');
 
-    Route::prefix('card/{card}/user')->group(function () {
+    Route::prefix('card/{card}/assignees')->group(function () {
         Route::get('', 'CardUserController@index');
         Route::put('', 'CardUserController@update');
         Route::delete('', 'CardUserController@destroy');

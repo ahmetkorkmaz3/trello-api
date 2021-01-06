@@ -4,6 +4,7 @@ namespace App\Http\Requests\Card\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class StoreCardUserRequest extends FormRequest
 {
@@ -20,11 +21,10 @@ class StoreCardUserRequest extends FormRequest
      */
     public function rules(): array
     {
-        // TODO: Check user in board
         return [
             'users' => ['required', 'array'],
             'users.*' => [
-                'exists:users,id',
+                'exists:board_users,user_id,board_id,' . $this->route('card')->column->board->id,
             ],
         ];
     }
