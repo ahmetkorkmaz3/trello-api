@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Board;
 use App\Models\BoardUserInvite;
 use App\Models\Card;
+use App\Models\CardCheckList;
 use App\Models\Column;
 use App\Models\Team;
 use App\Models\TeamUserInvite;
@@ -28,6 +29,7 @@ class AuthServiceProvider extends ServiceProvider
         Team::class => TeamPolicy::class,
         TeamUserInvite::class => TeamUserInvitePolicy::class,
         BoardUserInvite::class => BoardUserInvitePolicy::class,
+        CardCheckList::class => BoardPolicy::class,
     ];
 
     /**
