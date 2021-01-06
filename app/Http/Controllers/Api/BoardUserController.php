@@ -5,14 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BoardUser\StoreBoardUserRequest;
 use App\Http\Resources\Board\BoardUserResource;
-use App\Http\Resources\UserResource;
 use App\Models\Board;
 use App\Models\Invite;
-use App\Models\Team;
 use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class BoardUserController extends Controller
