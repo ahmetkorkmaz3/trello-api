@@ -7,17 +7,19 @@ use App\Http\Requests\Card\CheckList\StoreCheckListRequest;
 use App\Http\Requests\Card\CheckList\UpdateCheckListRequest;
 use App\Models\Card;
 use App\Models\CardCheckList;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class CardCheckListController extends Controller
 {
     /**
      * @param Card $card
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function index(Card $card): JsonResponse
     {
+        $this->authorize('view', $card->board());
         return $this->successResponse($card->checkLists, 'Success');
     }
 
@@ -25,9 +27,11 @@ class CardCheckListController extends Controller
      * @param StoreCheckListRequest $request
      * @param Card $card
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function store(StoreCheckListRequest $request, Card $card): JsonResponse
     {
+        $this->authorize('create', $card->board());
         try {
             $checklist = $card->checkLists()->create([
                 'text' => $request->text,
@@ -44,9 +48,11 @@ class CardCheckListController extends Controller
      * @param UpdateCheckListRequest $request
      * @param CardCheckList $cardCheckList
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function update(UpdateCheckListRequest $request, CardCheckList $cardCheckList): JsonResponse
     {
+        $this->authorize('update', $cardCheckList->card->colunm->board);
         try {
             $cardCheckList->update($request->validated());
         } catch (\Exception $exception) {
@@ -60,9 +66,11 @@ class CardCheckListController extends Controller
     /**
      * @param CardCheckList $cardCheckList
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function destroy(CardCheckList $cardCheckList): JsonResponse
     {
+        $this->authorize('delete', $cardCheckList->card->column->board);
         try {
             $cardCheckList->delete();
         } catch (\Exception $exception) {

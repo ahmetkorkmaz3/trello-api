@@ -30,4 +30,9 @@ class Card extends Model
     {
         return $this->hasMany(CardCheckList::class);
     }
+
+    public function board()
+    {
+        return $this->column->board;
+    }
 }
