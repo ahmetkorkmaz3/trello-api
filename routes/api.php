@@ -37,6 +37,14 @@ Route::middleware('auth:api')->group(function () {
         Route::delete('', 'CardAssignController@destroy');
     });
 
+    Route::prefix('card/{card}/checklist')->group(function () {
+        Route::get('', 'CardCheckListController@index');
+        Route::post('', 'CardCheckListController@store');
+    });
+
+    Route::put('checklist/{cardCheckList}', 'CardCheckListController@update');
+    Route::delete('checklist/{cardCheckList}', 'CardCheckListController@destroy');
+
     // team route list
     Route::apiResource('team', 'TeamController');
 

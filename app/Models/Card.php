@@ -25,4 +25,9 @@ class Card extends Model
     {
         return $this->belongsToMany(User::class, 'card_assignees');
     }
+
+    public function checkLists(): HasMany
+    {
+        return $this->hasMany(CardCheckList::class);
+    }
 }
