@@ -72,7 +72,7 @@ class CardController extends Controller
     public function show(Board $board, Column $column, Card $card): JsonResponse
     {
         $this->authorize('view', $board);
-
+        $card->load('checkLists', 'assignedUsers');
         return $this->successResponse(CardResource::make($card), 'Card details', 200);
     }
 
