@@ -22,31 +22,54 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('upload', 'UploadController');
 
-    // Board route list
+    // Board routes
     Route::apiResource('board', 'BoardController');
 
-    // Column route list
-    Route::apiResource('board.column', 'ColumnController');
-
-    // Card route list
-    Route::apiResource('board.column.card', 'CardController');
-
-    Route::prefix('card/{card}/assignees')->group(function () {
-        Route::get('', 'CardAssignController@index');
-        Route::put('', 'CardAssignController@update');
-        Route::delete('', 'CardAssignController@destroy');
+    // Column routes
+    Route::prefix('board/{board}/column')->group(function () {
+        Route::get('', 'ColumnController@index');
+        Route::post('', 'ColumnController@store');
     });
 
-    Route::prefix('card/{card}/checklist')->group(function () {
-        Route::get('', 'CardCheckListController@index');
-        Route::post('', 'CardCheckListController@store');
+    Route::prefix('column/{column}')->group(function () {
+        Route::get('', 'ColumnController@show');
+        Route::put('', 'ColumnController@update');
+        Route::delete('', 'ColumnController@update');
     });
 
-    Route::put('checklist/{cardCheckList}', 'CardCheckListController@update');
-    Route::delete('checklist/{cardCheckList}', 'CardCheckListController@destroy');
+    // Card routes
+    Route::prefix('column/{column}/card')->group(function () {
+        Route::get('', 'CardController@index');
+        Route::post('', 'CardController@store');
+    });
+
+    Route::prefix('card/{card}')->group(function () {
+        Route::get('', 'CardController@show');
+        Route::put('', 'CardController@update');
+        Route::delete('', 'CardController@update');
+
+        Route::prefix('/assignees')->group(function () {
+            Route::get('', 'CardAssignController@index');
+            Route::put('', 'CardAssignController@update');
+            Route::delete('', 'CardAssignController@destroy');
+        });
+
+        Route::prefix('/checklist')->group(function () {
+            Route::get('', 'CardCheckListController@index');
+            Route::post('', 'CardCheckListController@store');
+
+            Route::put('/{cardCheckList}', 'CardCheckListController@update');
+            Route::delete('/{cardCheckList}', 'CardCheckListController@destroy');
+        });
+    });
 
     // team route list
     Route::apiResource('team', 'TeamController');
+
+    Route::prefix('team/{team}/board')->group(function () {
+        Route::get('', 'CardController@index');
+        Route::post('', 'CardController@store');
+    });
 
     // Team Board route list
     Route::apiResource('team.board', 'TeamBoardController');
