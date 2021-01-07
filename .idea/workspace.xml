@@ -20,12 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66491a87-7a9b-4251-9ea6-035f5d4a037b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/16031791-9f8a-4505-8c87-832b53e677d8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/16031791-9f8a-4505-8c87-832b53e677d8.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Board.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Board.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Team.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_19_155313_create_board_team_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/BoardSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/BoardSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
