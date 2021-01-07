@@ -58,35 +58,33 @@ class ColumnController extends Controller
     }
 
     /**
-     * @param Board $board
      * @param Column $column
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function show(Board $board, Column $column): JsonResponse
+    public function show(Column $column): JsonResponse
     {
-        $this->authorize('view', $board);
+        $this->authorize('view', $column->board);
         $column->load('cards');
         return $this->successResponse(ColumnResource::make($column), 'Column Detail', 200);
     }
 
     /**
      * @param UpdateColumnRequest $request
-     * @param Board $board
      * @param Column $column
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(UpdateColumnRequest $request, Board $board, Column $column): JsonResponse
+    public function update(UpdateColumnRequest $request,Column $column): JsonResponse
     {
-        $this->authorize('update', $board);
+        $this->authorize('update', $column->board);
         DB::beginTransaction();
         try {
             $column->update($request->validated());
 
             activity()
                 ->causedBy(auth()->user())
-                ->performedOn($board)
+                ->performedOn($column->board)
                 ->log('update column');
         } catch (\Exception $exception) {
             report($exception);
@@ -100,22 +98,20 @@ class ColumnController extends Controller
     }
 
     /**
-     * @param DestroyColumnRequest $request
-     * @param Board $board
      * @param Column $column
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function destroy(DestroyColumnRequest $request, Board $board, Column $column): JsonResponse
+    public function destroy(Column $column): JsonResponse
     {
-        $this->authorize('delete', $board);
+        $this->authorize('delete', $column->board);
         DB::beginTransaction();
         try {
             $column->delete();
 
             activity()
                 ->causedBy(auth()->user())
-                ->performedOn($board)
+                ->performedOn($column->board)
                 ->log('delete column');
         } catch (\Exception $exception) {
             report($exception);

@@ -17,27 +17,25 @@ use Illuminate\Support\Facades\DB;
 class CardController extends Controller
 {
     /**
-     * @param Board $board
      * @param Column $column
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function index(Board $board, Column $column): JsonResponse
+    public function index(Column $column): JsonResponse
     {
-        $this->authorize('view', $board);
+        $this->authorize('view', $column->board);
         return $this->successResponse(CardResource::collection($column->cards), 'Card list', 200);
     }
 
     /**
      * @param StoreCardRequest $request
-     * @param Board $board
      * @param Column $column
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(StoreCardRequest $request, Board $board, Column $column): JsonResponse
+    public function store(StoreCardRequest $request, Column $column): JsonResponse
     {
-        $this->authorize('create', $board);
+        $this->authorize('create', $column->board);
 
         DB::beginTransaction();
 
@@ -49,7 +47,7 @@ class CardController extends Controller
 
             activity()
                 ->causedBy(auth()->user())
-                ->performedOn($board)
+                ->performedOn($column->board)
                 ->log('create new card');
         } catch (\Exception $exception) {
             report($exception);
@@ -63,30 +61,26 @@ class CardController extends Controller
     }
 
     /**
-     * @param Board $board
-     * @param Column $column
      * @param Card $card
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function show(Board $board, Column $column, Card $card): JsonResponse
+    public function show(Card $card): JsonResponse
     {
-        $this->authorize('view', $board);
+        $this->authorize('view', $card->board());
         $card->load('checkLists', 'assignedUsers');
         return $this->successResponse(CardResource::make($card), 'Card details', 200);
     }
 
     /**
      * @param UpdateCardRequest $request
-     * @param Board $board
-     * @param Column $column
      * @param Card $card
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(UpdateCardRequest $request, Board $board, Column $column, Card $card): JsonResponse
+    public function update(UpdateCardRequest $request, Card $card): JsonResponse
     {
-        $this->authorize('update', $board);
+        $this->authorize('update', $card->board());
 
         DB::beginTransaction();
 
@@ -94,7 +88,7 @@ class CardController extends Controller
             $card->update($request->validated());
             activity()
                 ->causedBy(auth()->user())
-                ->performedOn($board)
+                ->performedOn($card->board())
                 ->log('update card');
         } catch (\Exception $exception) {
             report($exception);
@@ -108,16 +102,13 @@ class CardController extends Controller
     }
 
     /**
-     * @param DestroyCardRequest $request
-     * @param Board $board
-     * @param Column $column
      * @param Card $card
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function destroy(DestroyCardRequest $request, Board $board, Column $column, Card $card): JsonResponse
+    public function destroy(Card $card): JsonResponse
     {
-        $this->authorize('delete', $board);
+        $this->authorize('delete', $card->board());
 
         DB::beginTransaction();
 
@@ -126,7 +117,7 @@ class CardController extends Controller
 
             activity()
                 ->causedBy(auth()->user())
-                ->performedOn($board)
+                ->performedOn($card->board())
                 ->log('delete card');
         } catch (\Exception $exception) {
             report($exception);
