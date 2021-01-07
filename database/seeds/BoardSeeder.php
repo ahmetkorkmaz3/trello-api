@@ -28,13 +28,5 @@ class BoardSeeder extends Seeder
             );
         });
 
-        $teams = Team::all();
-
-        Board::orderBy('id', 'DESC')->take(25)->each(function ($board) use ($teams) {
-            $board->teams()->attach(
-                $teams->random()->pluck('id')->toArray()
-            );
-        });
-
     }
 }
