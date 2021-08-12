@@ -21,8 +21,8 @@ class BoardController extends Controller
     {
         return $this->successResponse(
             BoardResource::collection(auth()->user()->boards),
-    'Auth user boards',
-        200
+            'Auth user boards',
+            200
         );
     }
 
